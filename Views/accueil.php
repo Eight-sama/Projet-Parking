@@ -1,4 +1,4 @@
-<h1>Les derniers articles</h1>
+<h1></h1>
 
 
 <?php
