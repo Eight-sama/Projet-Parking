@@ -60,32 +60,8 @@
                             { ?>
                                 
                                 <li><a href='<?php echo BASE_URL; ?>/index' >Acceuil</a></li>
-                                
-                                <?php if($_SESSION['lvl'] > 1){ ?>     
-                                <li><a href='<?php echo BASE_URL; ?>/bulletin' class="dropdown-toggle" id="ddlmenuItem" data-toggle="dropdown">Bulletin<i class="fa fa-angle-down"></i></a>                     <ul class="dropdown-menu" role="menu" aria-labelledby="ddlmenuItem">
-                                    <li><a role="menuitem" tabindex="-1" href="<?php echo BASE_URL; ?>/creation_devoir">Créer un devoir</a></li>
-                                     <li><a role="menuitem" tabindex="-1" href="<?php echo BASE_URL; ?>/bulletin">Bulletin</a></li>
-                                </ul>  
-                                </li>
-                                <?php }elseif($_SESSION['lvl'] == 1){ ?>
-                                <li><a href='<?php echo BASE_URL; ?>/bulletin'>Bulletin</a></li>
-                                <?php } ?>
-                                <?php if($_SESSION['lvl'] > 2){ ?>             
-                                <li><a href='<?php echo BASE_URL; ?>/etablissement' class="dropdown-toggle" id="ddlmenuItem" data-toggle="dropdown">Gestion établissement<i class="fa fa-angle-down"></i></a>
-                                <ul class="dropdown-menu" role="menu" aria-labelledby="ddlmenuItem">
-                                    <li><a role="menuitem" tabindex="-1" href="<?php echo BASE_URL; ?>/ajout_eleve">Ajout profs/eleves</a></li>
-                                     <li><a role="menuitem" tabindex="-1" href="<?php echo BASE_URL; ?>/supp_eleve">Supprimer des élèves</a></li>
-                                </ul>
-                                </li>
-                                <?php } ?>
-                                                                              
-                                <li><a class='ppp' href='<?php echo BASE_URL; ?>/inbox' class="dropdown-toggle" id="ddlmenuItem" data-toggle="dropdown">Messagerie<i class="fa fa-angle-down"></i></a>
-                                <ul class="dropdown-menu" role="menu" aria-labelledby="ddlmenuItem">
-                                    <li><a role="menuitem" tabindex="-1" href="<?php echo BASE_URL; ?>/inbox">Inbox</a></li>
-                                     <li><a role="menuitem" tabindex="-1" href="<?php echo BASE_URL; ?>/messagerie">Envoyer un Email</a></li>
-                                </ul>
-                                </li>
-                                
+                                <li><a href='<?php echo BASE_URL; ?>/reservation' >Réservation</a></li>
+                                <li><a href='<?php echo BASE_URL; ?>/contact' >Contact</a></li>
                                 
                                 <li><a class='ppp' href='<?php echo BASE_URL; ?>/profil'>Profil</a></li>
                                 
