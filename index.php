@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <?php session_start();//connexion bdd	
 		
 	try
@@ -46,3 +47,8 @@ require 'layout.php';
 
 
 ?>
+=======
+<?php
+
+require "/Views/home.php";
+>>>>>>> caa67980643649a31ba47f87a48da8c4fdd54a11
