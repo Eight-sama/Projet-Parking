@@ -1,36 +1,24 @@
 <?php
-    session_start();
-    
-    require "core/functions.php";
-    require "models/connect.php";
 
-    define('WEBROOT', dirname(__FILE__));
-    define('BASE_URL', dirname($_SERVER['SCRIPT_NAME']));
-    define('ROOT', dirname(WEBROOT));
-    define('DS', DIRECTORY_SEPARATOR);
-    define('CORE',ROOT.DS.'core');
+require "Config/config.cfg.php";
+require "Core/functions.core.php";
 
-      if(!isset($_GET['p']) || $_GET['p'] == "")
-      {
-          $page = 'accueil';
-      }
-      else
-      {
-          if(!file_exists("controllers/".$_GET['p'].".php"))
-          {
-              $page = '404';
-          }
-          else
-          {
-            $page = $_GET['p'];
-          }
-      }
+if(!isset($_GET['p']) || $_GET['p'] == "")
+{
+  $page = 'home.controller';
+}
+else
+{
+  if(!file_exists("Controllers/".$_GET['p'].".php"))
+  {
+      $page = 'not_found';
+  }
+  else
+  {
+    $page = $_GET['p'];
+  }
+}   
 
-    
+$init->display($page);
 
-    ob_start();//permet de ne plus renvoyer de contenu au navigateur
-    require "controllers/".$page.".php";
-    $content = ob_get_contents();//permet de recuperer le contenu executer depuis ob_start
-    ob_end_clean();
-    require "layout.php";
 ?>
