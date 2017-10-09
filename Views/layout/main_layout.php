@@ -11,11 +11,11 @@
         <![endif]-->
     <title>INTRANET</title>
     <!-- BOOTSTRAP CORE STYLE  -->
-    <link href="assets/css/bootstrap.css" rel="stylesheet" />
+    <link href="<?= BASE_URL ?>/Views/css/bootstrap.css" rel="stylesheet" />
     <!-- FONT AWESOME STYLE  -->
-    <link href="assets/css/font-awesome.css" rel="stylesheet" />
+    <link href="<?= BASE_URL ?>/Views/css/font-awesome.css" rel="stylesheet" />
     <!-- CUSTOM STYLE  -->
-    <link href="assets/css/style.css" rel="stylesheet" />
+    <link href="<?= BASE_URL ?>/Views/css/style.css" rel="stylesheet" />
     <!-- GOOGLE FONT -->
     <link href='http://fonts.googloeapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
 
@@ -87,7 +87,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
-                   &copy; Designed by : Chhuon Moni 
+                   &copy; Designed by : Chhuon Moni, Leveque Luc & Huchard Théo
                 </div>
 
             </div>
