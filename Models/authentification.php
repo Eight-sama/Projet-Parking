@@ -20,6 +20,7 @@ function inscription($nom , $prenom , $mdp , $email){
 function login($mdp , $email){
     
     
+    $alert="";
     global $bdd ; 
     
     $requete = $bdd->prepare("SELECT * FROM user WHERE  email=:email  ");
@@ -29,8 +30,12 @@ function login($mdp , $email){
     if(password_verify($mdp , $requete['mdp'])){
                 $_SESSION['connecte'] = true;
                 $_SESSION['id_u'] = $reponse['id_u'];
-                $_SESSION['lvl'] = $reponse['lvl']; 
+                $_SESSION['lvl'] = $reponse['lvl'];
+        $alert= "t'es co";
+        return $alert;
     }
     
+    $alert="erreur de connexion";
+    return $alert;
     
 }
