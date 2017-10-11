@@ -1,18 +1,13 @@
 <?php
-<<<<<<< HEAD
 namespace Core;
 
 class Functions{
     public function str_sub($contenu, $nb = 200)
-=======
-    function str_sub($contenu, $nb = 200)
->>>>>>> 6fc1799a3e0d496eea1d7f1d4940f38af9de9903
     {
         if(strlen($contenu)>200)
         {
             return substr($contenu,0,200)."...";
         }
-<<<<<<< HEAD
         return $contenu;
     }
     public function verif_form($post){
@@ -34,9 +29,3 @@ class Functions{
         }
     }
 }
-=======
-            
-        
-        return $contenu;
-    }
->>>>>>> 6fc1799a3e0d496eea1d7f1d4940f38af9de9903
