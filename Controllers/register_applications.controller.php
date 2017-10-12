@@ -1,11 +1,11 @@
 <?php
 namespace Controllers;
 
-require "../Models/Home";
+require "Models/Home/home.model.php";
 
 use Models\Home;
 
-class HomeController{
+class RegisterApplicationController{
     
     public function linkProfile(){
         
