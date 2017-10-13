@@ -8,18 +8,13 @@ define('ROOT', dirname(WEBROOT));
 define('DS', DIRECTORY_SEPARATOR);
 define('CORE',ROOT.DS.'core');
 
-require "Core/Autoloader.class.php";
-
-Autoloader::register();
+require "vendor/autoload.php";
 
 use Core\Controller;
-use Core\Functions;
-use Core\Loop;
 
 //Initialize objects
 $controller = new Controller;
-$functions = new Functions;
-$loop = new Loop;
+$functions = new Functions();
 
 //Launch Controller
-$init->display($pageDisp);
+$controller->init();
