@@ -8,7 +8,7 @@
     <title>Lucapark - Le parking de vos rêves</title>
 
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" media="screen" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.5/css/bootstrap.min.css">
+    <link rel="stylesheet" media="screen" href="<?= BASE_URL ?>/Views/css/bootstrap.min.css">
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn t work if you view the page via file:// -->
@@ -38,9 +38,9 @@
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Administration <span class="caret"></span></a>
                         <ul class="dropdown-menu">
                             <li><a href="<?= BASE_URL;?>/index.php?p=register_applications">Voir les demandes d'inscription</a></li>
-                            <li><a href="#">Voir les demandes de place</a></li>
+                            <li><a href="<?= BASE_URL;?>/index.php?p=slots_applications">Voir les demandes de place</a></li>
                             <li role="separator" class="divider"></li>
-                            <li><a href="#">Schéma du parking</a></li>
+                            <li><a href="<?= BASE_URL;?>/index.php?p=parking_scheme">Schéma du parking</a></li>
                             <li><a href="#">Gestion des utilisateurs</a></li>
                         </ul>
                     </li>
@@ -60,8 +60,9 @@
     <?= $content; ?>
 
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <script src="<?= BASE_URL ?>/Views/js/jquery-3.2.1.min.js"></script>
+    <script src="<?= BASE_URL ?>/Views/js/custom.js"></script>
+    <script src="<?= BASE_URL ?>/Views/css/bootstrap.min.js"></script>
 </body>
 
 </html>

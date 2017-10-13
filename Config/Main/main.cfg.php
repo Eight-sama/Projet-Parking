@@ -3,19 +3,19 @@ namespace Config\Main;
     
 class MainCfg{
     
-    public function define_webroot(){
+    public function defineWebroot(){
         define('WEBROOT', dirname(__FILE__));
     }
-    public function define_base_url(){
+    public function defineBaseUrl(){
         define('BASE_URL', dirname($_SERVER['SCRIPT_NAME']));
     }
-    public function define_root(){
+    public function defineRoot(){
         define('ROOT', dirname(WEBROOT));
     }
-    public function define_ds(){
+    public function defineDs(){
         define('DS', DIRECTORY_SEPARATOR);
     }
-    public function define_core(){
+    public function defineCore(){
         define('CORE',ROOT.DS.'core');
     }
     public function display($page){
