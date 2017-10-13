@@ -30,5 +30,17 @@ class ConnectUser{
             
         }
     }
+    
+   public function majMdp($mdp, $mdp2, $mdp3){
+    global $bdd;
+                            $requete = $bdd->prepare("UPDATE user SET mdp = :mdp3 WHERE id_u=".$_SESSION['id']);
+                                $requete->execute(array(
+                                'mdp3' => $mdp3
+                                ));
+}
+    
+    
+    
+    
 }
 ?>
