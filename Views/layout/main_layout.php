@@ -45,13 +45,13 @@
                         </ul>
                     </li>
                     <li class="dropdown">
-                        <a href="#">Réserver une place</a>
+                        <a href="<?= BASE_URL;?>/index.php?p=slots_applications">Réserver une place</a>
                     </li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
-                    <li><a href="#">Profil</a></li>
-                    <li><a href="#">Inscription / Connexion</a></li>
-                    <li><a href="#">Documentation</a></li>
+                    <li><a href="<?= BASE_URL;?>/index.php?p=user_space">Profil</a></li>
+                    <li><a href="<?= BASE_URL;?>/index.php?p=login_register_applications">Inscription / Connexion</a></li>
+                    <li><a href="<?= BASE_URL;?>/index.php?p=documentation">Documentation</a></li>
                 </ul>
             </div>
         </div>
