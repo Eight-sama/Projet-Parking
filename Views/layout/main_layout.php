@@ -62,7 +62,7 @@
 
     <script src="<?= BASE_URL ?>/Views/js/jquery-3.2.1.min.js"></script>
     <script src="<?= BASE_URL ?>/Views/js/custom.js"></script>
-    <script src="<?= BASE_URL ?>/Views/css/bootstrap.min.js"></script>
+    <script src="<?= BASE_URL ?>/Views/js/bootstrap.min.js"></script>
 </body>
 
 </html>
