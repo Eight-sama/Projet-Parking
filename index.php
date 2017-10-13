@@ -11,10 +11,11 @@ define('CORE',ROOT.DS.'core');
 require "vendor/autoload.php";
 
 use Core\Controller;
+use Core\Functions;
 
 //Initialize objects
-$controller = new Controller;
+$controller = new Controller();
 $functions = new Functions();
 
 //Launch Controller
-$controller->init();
+$controller->display();
