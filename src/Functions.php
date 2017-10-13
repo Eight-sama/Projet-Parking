@@ -7,7 +7,7 @@ class Functions
     *@str_sub(str,int)
     *Limit the string chain to the int limit
     */
-    public function str_sub($contenu, $nb = 200)
+    public function eStrSub($contenu, $nb = 200)
     {
         if(strlen($contenu)>200)
         {
@@ -16,10 +16,10 @@ class Functions
         return $contenu;
     }
 	/*
-    *@verif_form($_post)
+    *@verifForm($_post)
     *Verify form entries
     */
-    public function verif_form($post){
+    public function eVerifForm($post){
         if(isset($_POST['submit'])){
             if(isset($_POST['nom']) && preg_match("#^([A-Za-z]{1,})$#",$_POST['nom'])){
                 if(isset($_POST['prenom']) && preg_match("#^([A-Za-z]{1,})$#",$_POST['prenom'])){
@@ -41,7 +41,8 @@ class Functions
     *@e_foreach(array,array,object)
     *Views foreach
     */
-	public function e_foreach($v1,$v2, $object){
+	public function eForEach($v1,$v2, $object)
+    {
         foreach($v1 as $v2){
             return $object;
         }
@@ -50,7 +51,8 @@ class Functions
     *@e_if(bool,var/object,var/object)
     *Views if
     */
-    public function e_if($condition, $else, $if){
+    public function eIf($condition, $else, $if)
+    {
         if($condition){
             return $if;
         }
@@ -62,9 +64,17 @@ class Functions
     *@e_while(bool,var/object)
     *Views while
     */
-    public function e_while($condition, $object){
+    public function eWhile($condition, $object)
+    {
         while($condition){
             return $object;
         }
+    }
+    public function eUrlToClass($str){
+        list($first,$second) = explode('_',$str);
+        $first = ucfirst($first);
+        $second = ucfirst($second);
+        $last = $first.$second;
+        return $last;
     }
 }
