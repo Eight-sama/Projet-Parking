@@ -12,7 +12,8 @@ if(isset($_POST['submit'])){
     }
     
     if($error == false){
-        login($mdp, $email);
+    login($_POST['mdp'], $_POST['email']);
+        echo $alert ; 
     }
 }
 
