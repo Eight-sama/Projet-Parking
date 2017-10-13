@@ -1,7 +1,7 @@
 <?php
 namespace Models\Connect;
     
-class ConnectUser{
+class ConnectUserModel{
     
     public function inscription($nom , $prenom , $mdp , $email){
 

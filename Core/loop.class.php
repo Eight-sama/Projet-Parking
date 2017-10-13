@@ -2,7 +2,7 @@
 
 namespace Core;
 
-class Loop{
+class LoopCore{
     public function e_foreach($v1,$v2, $object){
         foreach($v1 as $v2){
             return $object;

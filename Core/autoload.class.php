@@ -1,25 +1,22 @@
 <?php
 namespace Core;
 
-class Autoload{
+class AutoloadCore{
 	public function __autoload($class_name){
         //Class directories
         $directories = array(
-			// Core files
+			// Core folders
 			'Core/',
-            // Controllers files
+            // Controllers folders
             'Controllers/',
-            // Models files
+            // Models folders
             'Models/Connect/',
             'Models/Home/'
         );
 
         //For each directory
         foreach($directories as $directory){
-            $this->requireClass('cfg', $class_name, $directory);
-			$this->requireClass('core', $class_name, $directory);
-            $this->requireClass('controller', $class_name, $directory);
-            $this->requireClass('model', $class_name, $directory);
+            $this->requireClass('class', $class_name, $directory);
         }
     }
 

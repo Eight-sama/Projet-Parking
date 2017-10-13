@@ -1,21 +1,12 @@
 <?php
+namespace Controllers;
 
-require "Model/authentification.php";
+use Models\Home;
 
-if(isset($_POST['submit'])){
-    $error = false;
-    if(!isset($_POST['email'])){
-        $error = true;
-    }
-    if(!isset($_POST['mdp']) || !preg_match("#^([A-Za-z0-9]{1,})$#",$_POST['mdp'])){
-        $error = true;
-    }
+class LoginController{
     
-    if($error == false){
-    login($_POST['mdp'], $_POST['email']);
-        echo $alert ; 
+    public function userSpace(){
+
     }
 }
-
-
-require "view/login.php";
+?>

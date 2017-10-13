@@ -9,16 +9,21 @@ define('DS', DIRECTORY_SEPARATOR);
 define('CORE',ROOT.DS.'core');
 
 require "Core/autoload.core.php";
-require "Core/functions.core.php";
-require "Core/loop.core.php";
-use Core\Autoload;
-$autoload = new Autoload;
-$autoload->__autoload('MainCfg');
-$autoload->__autoload('ConfigCfg');
-$autoload->__autoload('ControllerCfg');
-$autoload->__autoload('Loop');
+use Core\AutoloadCore;
+$autoload = new AutoloadCore;
+$autoload->__autoload('AutoloadCore');
+$autoload->__autoload('ControllerCore');
+$autoload->__autoload('FunctionsCore');
+$autoload->__autoload('LoopCore');
 
-//Recuperation and display of the page with ob_start
-$init = new MainCfg;
+use Core\ControllerCore;
+use Core\FunctionsCore;
+use Core\LoopCore;
+
+//Initialize objects
+$controller = new ControllerCore;
+$functions = new FunctionsCore;
+$loop = new LoopCore;
+
+//Launch Controller
 $init->display($pageDisp);
-?>

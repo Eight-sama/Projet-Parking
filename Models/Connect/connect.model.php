@@ -1,7 +1,7 @@
 <?php
 namespace Models\Connect;
     
-class Connect{
+class ConnectModel{
     
     public function connect_bdd(){
         try

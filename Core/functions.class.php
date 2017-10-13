@@ -1,7 +1,7 @@
 <?php
 namespace Core;
 
-class Functions{
+class FunctionsCore{
     public function str_sub($contenu, $nb = 200)
     {
         if(strlen($contenu)>200)

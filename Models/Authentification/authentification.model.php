@@ -1,7 +1,7 @@
 <?php
 namespace Models\Authentification;
 
-class Authentification{
+class AuthentificationModel{
 
 	const ID_NOT_MEMBER = 0;
 	const ID_USER = 1;
