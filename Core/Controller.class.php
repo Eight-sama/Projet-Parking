@@ -1,7 +1,7 @@
 <?php
 namespace Core;
 
-class ControllerCore
+class Controller
 {
 	/*
     *@getPage()

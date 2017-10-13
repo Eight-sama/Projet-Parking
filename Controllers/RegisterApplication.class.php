@@ -1,12 +1,9 @@
 <?php
 namespace Controllers;
 
-use Models\Home;
+class RegisterApplication{
 
-class RegisterApplicationController{
-    
     public function linkProfile(){
-        
+
     }
 }
-?>

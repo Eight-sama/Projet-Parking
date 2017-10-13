@@ -1,12 +1,9 @@
 <?php
 namespace Controllers;
 
-use Models\Home;
-
-class HomeController{
+class Home{
 
     public function userSpace(){
 
     }
 }
-?>

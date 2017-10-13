@@ -1,8 +1,8 @@
 <?php
 namespace Models\Connect;
-    
+
 class ConnectUserModel{
-    
+
     public function inscription($nom , $prenom , $mdp , $email){
 
         global $bdd;
@@ -13,7 +13,7 @@ class ConnectUserModel{
         $requete ->bindValue(":email",$email,PDO::PARAM_STR);
         $requete ->bindValue(":mdp",$mdp,PDO::PARAM_STR);
         $requete->execute();
-        
+
         return $requete;
     }
 

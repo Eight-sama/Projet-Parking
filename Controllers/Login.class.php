@@ -1,12 +1,9 @@
 <?php
 namespace Controllers;
 
-use Models\Home;
+class Login{
 
-class LoginController{
-    
     public function userSpace(){
 
     }
 }
-?>

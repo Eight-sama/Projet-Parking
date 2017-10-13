@@ -1,8 +1,8 @@
 <?php
 namespace Models\Connect;
-    
+
 class ConnectModel{
-    
+
     public function connect_bdd(){
         try
         {
@@ -13,5 +13,5 @@ class ConnectModel{
              die("Erreur de connexion.");
         }
     }
-    
+
 }
