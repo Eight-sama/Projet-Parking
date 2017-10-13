@@ -1,21 +1,26 @@
 <?php
 
 use Config\Main\MainCfg;
-use Config\ConfigCfg;
+use Config\Config\ConfigCfg;
 use Config\Controller;
+use Config\Autoloader\AutoloaderCfg;
 
-//Initialisation des variables de config
+//Initialiasing configuration variables
 $cfg = new ConfigCfg;
 $cfg->initialise();
 
-//Récupération du controller
+//Recuperation of the controller
 $page = new Controller;
 $pageDisp = $page->getPage();
 
-//Initialisation du controller
-$controller = $page->initController($pageDisp);
+//Autoloading classes
+$autoload = new AutoloaderCfg;
+$autoload->__autoload('initController');
 
-//Récupération et affichage de la page via ob_start
+//Initialising controller
+/*$controller = $page->initController($pageDisp);*/
+
+//Recuperation and display of the page with ob_start
 $init = new MainCfg;
 $init->display($pageDisp);
 

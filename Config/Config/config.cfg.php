@@ -1,5 +1,5 @@
 <?php
-namespace Config;
+namespace Config\Config;
 
 require "Config/Main/main.cfg.php";
 
@@ -10,12 +10,11 @@ class ConfigCfg{
     public function initialise(){     
         session_start();
         $init = new MainCfg;
-        $init->define_webroot();
-        $init->define_base_url();
-        $init->define_root();
-        $init->define_ds();
-        $init->define_core();
+        $init->defineWebroot();
+        $init->defineBaseUrl();
+        $init->defineRoot();
+        $init->defineDs();
+        $init->defineCore();
     }
-    
 }    
 ?>

@@ -2,8 +2,8 @@
 	<legend>Formulaire de connection</legend>
 
 	<div class="form-group">
-		email<input type="text" name="email" class="form-control" >
-		mdp<input type="password" name="mdp" class="form-control" >
+		<label for="">E-mail</label><input type="text" name="email" class="form-control" >
+		<label for="">Mot de passe<input type="password" name="mdp" class="form-control" >
 	</div>
 
 
