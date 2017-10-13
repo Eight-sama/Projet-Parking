@@ -1,7 +1,7 @@
 <?php
 namespace Config;
 
-class Controller{
+class ControllerCfg{
     /*
     *@getPage()
     *Retrieve and require the controller while also returning
