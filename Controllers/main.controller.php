@@ -1,8 +1,8 @@
 <?php
-namespace Config;
+namespace Controllers;
 
-class ControllerCfg{
-    /*
+class Main{
+   /*
     *@getPage()
     *Retrieve and require the controller while also returning
     *the page name to display it
@@ -29,17 +29,16 @@ class ControllerCfg{
             }
         }
     }
-    
+
     /*
     *@initController(str)
-    *Initialise the controller with the old name 
+    *Initialise the controller with the old name
     *
     */
     public function initController($controller){
         $controllername = str_replace("_", "", ucwords((ucfirst($controller."Controller")), '_'));
         $controller = new $controllername;
-        return $controller;        
+        return $controller;
     }
 }
-
 ?>
