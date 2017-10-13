@@ -41,7 +41,7 @@
                             <li><a href="<?= BASE_URL;?>/index.php?p=slots_applications">Voir les demandes de place</a></li>
                             <li role="separator" class="divider"></li>
                             <li><a href="<?= BASE_URL;?>/index.php?p=parking_scheme">Schéma du parking</a></li>
-                            <li><a href="#">Gestion des utilisateurs</a></li>
+                            <li><a href="<?= BASE_URL;?>/index.php?p=manage_user">Gestion des utilisateurs</a></li>
                         </ul>
                     </li>
                     <li class="dropdown">
@@ -49,7 +49,7 @@
                     </li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
-                    <li><a href="<?= BASE_URL;?>/index.php?p=user_space">Profil</a></li>
+                   <?= $loop->e_if(isConnected(),'<li><a href="<?= BASE_URL;?>/index.php?p=user_space">Profil</a></li>',''); ?>
                     <li><a href="<?= BASE_URL;?>/index.php?p=login_register_applications">Inscription / Connexion</a></li>
                     <li><a href="<?= BASE_URL;?>/index.php?p=documentation">Documentation</a></li>
                 </ul>

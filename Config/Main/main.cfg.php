@@ -18,12 +18,4 @@ class MainCfg{
     public function defineCore(){
         define('CORE',ROOT.DS.'core');
     }
-    public function display($page){
-        ob_start();
-        require "Views/content/".$page.".view.php";
-        $content = ob_get_contents();
-        ob_end_clean();
-        require "Views/layout/main_layout.php";
-    }
-    
 }
