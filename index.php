@@ -1,5 +1,4 @@
 <?php
-
 session_start();
 
 define('WEBROOT', dirname(__FILE__));
@@ -13,8 +12,7 @@ require "vendor/autoload.php";
 use Core\Controller;
 
 //Initialize objects
-$controller = new Controller;
-$functions = new Functions();
+$controller = new Controller();
 
 //Launch Controller
-$controller->init();
+$controller->launch();
