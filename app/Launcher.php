@@ -2,61 +2,81 @@
 namespace App;
 
 use PPEParking\Controllers\Home;
-use PPEParking\Controllers\LoginController;
+use PPEParking\Controllers\Login;
 use PPEParking\Controllers\RegisterApplication;
 use PPEParking\Controllers\SignUp;
 
+/**
+ * Class Launcher
+ * @package App
+ */
 class Launcher
 {
     private $page;
 
+    /**
+     * Launcher constructor.
+     */
     public function __construct(){
         $this->page = "";
     }
-	/*
-    *@getPage()
-    *Retrieve and require the controller
-    */
+    /**
+     *@var
+     *Retrieve and require the controller
+     */
     public function start()
 	{
         if(!isset($_GET['page']) || $_GET['page'] == "")
         {
-            $page = 'home';
-            $this->controllerInit($page);
+            $this->setPage('home');
+            $this->controllerInit($this->getPage());
         }
         else
         {
-            if(!file_exists("app/Controllers/".ucfirst($_GET['page']).".controller.php"))
+            if(!file_exists("src/PPEParking/Controllers/".ucfirst($_GET['page']).".php"))
             {
-                $page = 'notFound';
-                $this->controllerInit($page);
+                $this->setPage('notFound');
+                $this->controllerInit($this->getPage());
             }
             else
             {
-                $page = $_GET['page'];
-                require "app/Controllers/".$_GET['page'].".controller.php";
-                $this->controllerInit($page);
+                $this->setPage($_GET['page']);
+                $this->controllerInit($this->getPage());
             }
         }
     }
+    /**
+     * @param $page
+     */
     public function controllerInit($page){
-        $this->pageCond('home',$page, Home::homeSpace($page));
-        $this->pageCond('login',$page, Login::display($page));
-        $this->pageCond('registerApplication',$page, RegisterApplication::display($page));
-        $this->pageCond('signUp',$page, SignUp::display($page));   
-    }
-    public function pageCond($page, $page2, $object){
-        if($page2 == $page){
-            return $object;
+        if($page == 'home'){
+            $homeController = new Home();
+            $homeController->start();
         }
-        else{
-            return NotFound::display($page);
+        if($page == 'login'){
+            $homeController = new Home();
+            $homeController->start();
+        }
+        if($page == 'registerApplication'){
+            $homeController = new Home();
+            $homeController->start();
+        }
+        if($page == 'notFound'){
+            $homeController = new Home();
+            $homeController->start();
         }
     }
-    public function setPage(){
+    /**
+     * @param $page
+     */
+    public function setPage($page){
+        $this->page = $page;
+    }
 
-    }
+    /**
+     * @return string
+     */
     public function getPage(){
-        
+        return $this->page;
     }
 }

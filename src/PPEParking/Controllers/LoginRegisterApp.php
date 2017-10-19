@@ -1,7 +1,7 @@
 <?php
 namespace PPEParking\Controllers;
 
-class RegisterApplication{
+class LoginRegisterApp{
 
     public function linkProfile(){
 
