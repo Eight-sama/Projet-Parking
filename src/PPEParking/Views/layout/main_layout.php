@@ -8,7 +8,7 @@
     <title>Lucapark - Le parking de vos rêves</title>
 
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" media="screen" href="<?= BASE_URL ?>/app/Views/css/bootstrap.min.css">
+    <link rel="stylesheet" media="screen" href="<?= BASE_URL ?>/web/css/bootstrap.min.css">
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn t work if you view the page via file:// -->
@@ -37,19 +37,19 @@
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Administration <span class="caret"></span></a>
                         <ul class="dropdown-menu">
-                            <li><a href="<?= BASE_URL;?>/index.php?p=register_applications">Voir les demandes d'inscription</a></li>
-                            <li><a href="<?= BASE_URL;?>/index.php?p=slots_applications">Voir les demandes de place</a></li>
+                            <li><a href="<?= BASE_URL;?>/index.php?p=registerApplications">Voir les demandes d'inscription</a></li>
+                            <li><a href="<?= BASE_URL;?>/index.php?p=slotsApplications">Voir les demandes de place</a></li>
                             <li role="separator" class="divider"></li>
-                            <li><a href="<?= BASE_URL;?>/index.php?p=parking_scheme">Schéma du parking</a></li>
-                            <li><a href="<?= BASE_URL;?>/index.php?p=manage_user">Gestion des utilisateurs</a></li>
+                            <li><a href="<?= BASE_URL;?>/index.php?p=parkingScheme">Schéma du parking</a></li>
+                            <li><a href="<?= BASE_URL;?>/index.php?p=manageUser">Gestion des utilisateurs</a></li>
                         </ul>
                     </li>
                     <li class="dropdown">
-                        <a href="<?= BASE_URL;?>/index.php?p=slots_applications">Réserver une place</a>
+                        <a href="<?= BASE_URL;?>/index.php?p=slotsApplications">Réserver une place</a>
                     </li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
-                   <?= $f->eIf(isConnected(),'<li><a href="<?= BASE_URL;?>/index.php?p=user_space">Profil</a></li>',''); ?>
+                   <?= $this->eIf($this->getMod()->isConnected(),'<li><a href="<?= BASE_URL;?>/index.php?p=userSpace">Profil</a></li>',''); ?>
                     <li><a href="<?= BASE_URL;?>/index.php?p=login_register_applications">Inscription / Connexion</a></li>
                     <li><a href="<?= BASE_URL;?>/index.php?p=documentation">Documentation</a></li>
                 </ul>
@@ -59,10 +59,9 @@
     
     <?= $content; ?>
 
-
-    <script src="<?= BASE_URL ?>/app/Views/js/jquery-3.2.1.min.js"></script>
-    <script src="<?= BASE_URL ?>/app/Views/js/custom.js"></script>
-    <script src="<?= BASE_URL ?>/app/Views/js/bootstrap.min.js"></script>
+    <script src="<?= BASE_URL ?>/web/js/jquery-3.2.1.min.js"></script>
+    <script src="<?= BASE_URL ?>/web/js/custom.js"></script>
+    <script src="<?= BASE_URL ?>/web/js/bootstrap.min.js"></script>
 </body>
 
 </html>

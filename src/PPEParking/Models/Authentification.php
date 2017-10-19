@@ -53,10 +53,12 @@ class Authentification{
             return false;
         }
     }
-    public function isConnected($id){
+    public function isConnected(){
         global $bdd;
-        if(isset($_SESSION) && ($_SESSION['lvl'] == self:ID_USER || $_SESSION['lvl'] == self:ID_ADMIN)){
-            return true;
+        if(isset($_SESSION) && !empty($_SESSION)){
+            if(($_SESSION['lvl'] == self::ID_USER || $_SESSION['lvl'] == self::ID_ADMIN)){
+                return true;
+            }
         }
         else{
             return false;
@@ -64,8 +66,8 @@ class Authentification{
     }
     public function getUserInfo($id, $column){
         global $bdd;
-        $requete = $bdd->prepare("SELECT ? FROM users WHERE id = ?")
-        $requete->execute({$column,$id});
+        $requete = $bdd->prepare("SELECT ? FROM users WHERE id = ?");
+        $requete->execute([$column,$id]);
         return $requete->fetch();
     }
     public function majMdp($mdp, $mdp2, $mdp3){

@@ -5,6 +5,7 @@ use PPEParking\Controllers\Home;
 use PPEParking\Controllers\Login;
 use PPEParking\Controllers\RegisterApplication;
 use PPEParking\Controllers\SignUp;
+use PPEParking\Controllers\NotFound;
 
 /**
  * Class Launcher
@@ -54,16 +55,16 @@ class Launcher
             $homeController->start();
         }
         if($page == 'login'){
-            $homeController = new Home();
-            $homeController->start();
+            $loginController = new Login();
+            $loginController->start();
         }
         if($page == 'registerApplication'){
-            $homeController = new Home();
-            $homeController->start();
+            $registerApplicationController = new RegisterApplication();
+            $registerApplicationController->start();
         }
         if($page == 'notFound'){
-            $homeController = new Home();
-            $homeController->start();
+            $notFoundController = new NotFound();
+            $notFoundController->start();
         }
     }
     /**

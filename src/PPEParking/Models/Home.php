@@ -3,11 +3,11 @@ namespace PPEParking\Models;
 
 class Home
 {
-    public function afficherInfoUser()
+    public function displayInfoUser()
 	{
 	    global $bdd;
-		$req = $bdd->query("SELECT * FROM user WHERE id_u=".$_SESSION['id']);
-		$rep = $req->fetch();
-        return $rep;
+		$request = $bdd->query("SELECT * FROM user WHERE id_u=".$_SESSION['id']);
+		$response = $request->fetch();
+        return $response;
     }
 }
