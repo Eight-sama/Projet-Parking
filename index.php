@@ -9,10 +9,8 @@ define('CORE',ROOT.DS.'core');
 
 require "vendor/autoload.php";
 
-use Core\Controller;
+use App\Launcher;
 
-//Initialize objects
-$controller = new Controller();
-
-//Launch Controller
-$controller->launch();
+//Initialize & launch app
+$launcher = new Launcher();
+$launcher->start();
