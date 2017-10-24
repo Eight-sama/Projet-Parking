@@ -45,12 +45,12 @@
                         </ul>', ''); ?>
                 </li>
                 <li class="dropdown">
-                    <?= $this->eIf($object['user']->isConnected(), '<a href="<?= BASE_URL; ?>/index.php?page=slotsApplications">Réserver une place</a>', ''); ?>
+                    <?= $this->eIf($object['user']->isConnected(), '<a href="'.BASE_URL.'/index.php?page=slotsApplications">Réserver une place</a>', ''); ?>
                 </li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
-                <?= $this->eIf($object['user']->isConnected(), '<li><a href="<?= BASE_URL;?>/index.php?page=userSpace">Profil</a></li>', ''); ?>
-                <?= $this->eIf($object['user']->isConnected(), '<li><a href="<?= BASE_URL; ?>/index.php?page=disconnect">Déconnexion</a></li>', '<li><a href="<?= BASE_URL; ?>/index.php?page=login">Inscription / Connexion</a></li>'); ?>
+                <?= $this->eIf($object['user']->isConnected(), '<li><a href="'.BASE_URL.'/index.php?page=userSpace">Profil</a></li>', ''); ?>
+                <?= $this->eIf($object['user']->isConnected(), '<li><a href="'.BASE_URL.'/index.php?page=disconnect">Déconnexion</a></li>', '<li><a href="<?= BASE_URL; ?>/index.php?page=login">Inscription / Connexion</a></li>'); ?>
 
 
                 <li><a href="<?= BASE_URL; ?>/index.php?page=documentation">Documentation</a></li>

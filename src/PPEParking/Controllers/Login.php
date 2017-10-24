@@ -11,9 +11,9 @@ class Login extends Functions
     public function start()
     {
         $user = new Authentication();
-        if ($user->isConnected()) {
-            $this->header('/index.php?page=profile');
-        } else {
+        if($user->isConnected()){
+            header('Location: '.BASE_URL.'/index.php?page=profile');
+        }else{
             if (isset($_POST['submit'])) {
                 $user->login();
             } else {

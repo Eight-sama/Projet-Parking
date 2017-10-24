@@ -5,8 +5,9 @@ use PPEParking\Controllers\Profile;
 use PPEParking\Controllers\Home;
 use PPEParking\Controllers\Login;
 use PPEParking\Controllers\RegisterApplication;
-use PPEParking\Controllers\SignUp;
+use PPEParking\Controllers\ApplyRegisterApp;
 use PPEParking\Controllers\NotFound;
+use PPEParking\Controllers\UserSpace;
 
 /**
  * Class Launcher
@@ -58,6 +59,10 @@ class Launcher
         if($page == 'login'){
             $loginController = new Login();
             $loginController->start();
+        }
+        if($page == 'applyRegisterApp'){
+            $applyRegisterAppController = new ApplyRegisterApp();
+            $applyRegisterAppController->start();
         }
         if($page == 'profile'){
             $profileController = new Profile();
