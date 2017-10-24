@@ -40,7 +40,7 @@
                         <ul class="dropdown-menu">
                             <li><a href="<?= BASE_URL; ?>/index.php?page=registerApplications">Voir les demandes
                                     d'inscription</a></li>
-                            <li><a href="<?= BASE_URL; ?>/index.php?page=slotsApplications">Voir les demandes de
+                            <li><a href="<?= BASE_URL; ?>/index.php?page=slotApplications">Voir les demandes de
                                     place</a></li>
                             <li role="separator" class="divider"></li>
                             <li><a href="<?= BASE_URL; ?>/index.php?page=parkingScheme">Schéma du parking</a></li>
@@ -49,7 +49,9 @@
                     <?php } ?>
                 </li>
                 <li class="dropdown">
+                    <?php if ($object['user']->isConnected() && $object['user']->isAdmin($_SESSION['lvl'])) { ?>
                     <?= $this->eIf($object['user']->isConnected(), '<a href="' . BASE_URL . '/index.php?page=slotApplications">Réserver une place</a>', ''); ?>
+                    <?php } ?>
                 </li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
