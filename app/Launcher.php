@@ -1,6 +1,7 @@
 <?php
 namespace App;
 
+use PPEParking\Controllers\Profile;
 use PPEParking\Controllers\Home;
 use PPEParking\Controllers\Login;
 use PPEParking\Controllers\RegisterApplication;
@@ -57,6 +58,10 @@ class Launcher
         if($page == 'login'){
             $loginController = new Login();
             $loginController->start();
+        }
+        if($page == 'profile'){
+            $profileController = new Profile();
+            $profileController->start();
         }
         if($page == 'registerApplication'){
             $registerApplicationController = new RegisterApplication();

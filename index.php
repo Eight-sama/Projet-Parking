@@ -1,11 +1,16 @@
 <?php
 session_start();
+try {
+    $db = new PDO("mysql:host=localhost;dbname=parking;charset=utf8", "root", "");
+} catch (Exception $e) {
+    die("Error: Couldn't connect to the database.");
+}
 
 define('WEBROOT', dirname(__FILE__));
 define('BASE_URL', dirname($_SERVER['SCRIPT_NAME']));
 define('ROOT', dirname(WEBROOT));
 define('DS', DIRECTORY_SEPARATOR);
-define('CORE',ROOT.DS.'core');
+define('CORE', ROOT . DS . 'core');
 
 require "vendor/autoload.php";
 

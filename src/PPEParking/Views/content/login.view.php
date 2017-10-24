@@ -6,7 +6,9 @@
                     <div class="panel-heading"><h4>Connexion</h4></div>
                     <div class="panel-body">
                         <div class="form-group">
-                            <?= $object['form']; ?>
+                            <form method="post" action="<?= BASE_URL;?>/index.php?page=login">
+                                <?= $object['form']; ?>
+                            </form>
                         </div>
                     </div>
                 </div>

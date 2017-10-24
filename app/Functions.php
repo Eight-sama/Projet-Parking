@@ -172,6 +172,10 @@ class Functions
         return $html;
     }
 
+    public function header($link){
+        header('Location :'.BASE_URL.$link);
+    }
+
     /*
     *@display(str)
     *Display the page while using ob_start

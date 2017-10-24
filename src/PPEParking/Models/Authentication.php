@@ -2,6 +2,8 @@
 
 namespace PPEParking\Models;
 
+use App\Functions;
+
 class Authentication
 {
 
@@ -12,33 +14,28 @@ class Authentication
     public function inscription($surname, $name, $mdp, $email)
     {
         global $bdd;
-
         $request = $bdd->prepare("INSERT INTO user(surname,name,email,mdp)  Values(:surname ,:name , :email , :mdp) ");
         $request->bindValue(":surname", $surname, PDO::PARAM_STR);
         $request->bindValue(":name", $name, PDO::PARAM_STR);
         $request->bindValue(":email", $email, PDO::PARAM_STR);
         $request->bindValue(":mdp", $mdp, PDO::PARAM_STR);
         $request->execute();
-
         return $request;
     }
 
     public function login()
     {
-        $login = $_POST['login'];
-        $mdp = sha1($_POST['mdp']);
-        $requete = $bdd->query("SELECT * FROM user WHERE login ='" . $login . "' AND mdp = '" . $mdp . "'");
-        if ($reponse = $requete->fetch()) {
-            $_SESSION['connecte'] = true;
-            $_SESSION['id'] = $reponse['idUtilisateur'];
-            $_SESSION['rang'] = $reponse['rang'];
-            $_SESSION['log'] = $reponse['login'];
-            $_SESSION['email'] = $reponse['email'];
-            $connected = true;
-            return $connected;
-        } else {
-            $connected = false;
-            return $connected;
+        global $db;
+        $function = new Functions();
+        $email = $_POST['email'];
+        $password = sha1($_POST['password']);
+        $request = $db->query("SELECT * FROM user WHERE email ='" . $email . "' AND password = '" . $password . "'");
+        if ($response = $request->fetch()) {
+            $_SESSION['connected'] = true;
+            $_SESSION['id'] = $response['id_u'];
+            $_SESSION['lvl'] = $response['lvl'];
+            $_SESSION['email'] = $response['email'];
+            $function->header('index.php?page=profile');
         }
     }
 
@@ -63,7 +60,7 @@ class Authentication
     public function isConnected()
     {
         if (isset($_SESSION) && !empty($_SESSION)) {
-            if (($_SESSION['lvl'] == self::ID_USER || $_SESSION['lvl'] == self::ID_ADMIN)) {
+            if (($_SESSION['connected'])) {
                 return true;
             }
         } else {
@@ -73,8 +70,8 @@ class Authentication
 
     public function getUserInfo($id, $column)
     {
-        global $bdd;
-        $request = $bdd->prepare("SELECT ? FROM users WHERE id = ?");
+        global $db;
+        $request = $db->prepare("SELECT ? FROM user WHERE id_u = ?");
         $request->execute([$column, $id]);
         return $request->fetch();
     }
@@ -85,15 +82,6 @@ class Authentication
         $request = $bdd->prepare("UPDATE user SET mdp = :mdp WHERE id_u=" . $_SESSION['id']);
         $request->execute(array('mdp' => $mdp));
     }
-
-    public function getLogin($login)
-    {
-        global $bdd;
-        $request = $bdd->prepare("SELECT * FROM user WHERE login = ?");
-        $request->execute(array($login));
-        return $request;
-    }
-
     public function getEmail($email)
     {
         global $bdd;

@@ -105,4 +105,4 @@ if (isset($_POST["case3"])) {
 ?>
 
 
-<?php require "../views/profil.view.php"; ?>
+<?php require "../views/profile.view.php"; ?>

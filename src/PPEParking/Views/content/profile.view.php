@@ -21,15 +21,13 @@
                         <div class="tab-content">
                             <div class="tab-pane fade active in" id="login">
                                 <form method="post">
-                                    <h4>Login:<input class="form-control" type="text" name="login"
-                                                     value="<?php echo $rep['login']; ?>"/></h4>
+                                    <label for=""><h4>Email:</h4></label>
+                                    <input class="form-control" type="text" name="login" value="<?= $object['user']->getUserInfo($_SESSION['id'], 'email'); ?>"/>
                                     <h4>Nom:<input class="form-control" type="text" name="nom"
                                                    value="<?php echo $rep['nom']; ?>"/></h4>
                                     <h4>Prénom:<input class="form-control" type="text" name="prenom"
                                                       value="<?php echo $rep['prenom']; ?>"/></h4>
-                                    <button class="btn btn-default" type="submit" name="case1"><i
-                                                class=" fa fa-refresh "></i> Update
-                                    </button>
+                                    <button class="btn btn-default" type="submit" name="case1"><i class="fa fa-refresh "></i>Update</button>
                                 </form>
                                 <?php if (isset($message_co)) {
                                     echo $message_co;
