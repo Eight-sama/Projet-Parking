@@ -9,3 +9,4 @@
 >>>>>>> 6153920efe55b730cb04ec2757d377cf69931422
 *.xml
 *.iml
+/nbproject/private/
