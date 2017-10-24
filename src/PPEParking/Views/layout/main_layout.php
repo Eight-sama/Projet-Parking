@@ -29,30 +29,32 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="<?= BASE_URL;?>/index.php?page=home">Lucapark</a>
+            <a class="navbar-brand" href="<?= BASE_URL; ?>/index.php?page=home">Lucapark</a>
         </div>
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
                 <li class="dropdown">
-                    <?= $this->eIf($object['user']->isConnected() && $object['user']->isAdmin($_SESSION['id']),
-                        '<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Administration <span class="caret"></span></a>
+                    <?php if ($object['user']->isConnected() && $object['user']->isAdmin($_SESSION['lvl'])) { ?>
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                           aria-expanded="false">Administration <span class="caret"></span></a>
                         <ul class="dropdown-menu">
-                            <li><a href="<?= BASE_URL;?>/index.php?page=registerApplications">Voir les demandes d\'inscription</a></li>
-                            <li><a href="<?= BASE_URL;?>/index.php?page=slotsApplications">Voir les demandes de place</a></li>
+                            <li><a href="<?= BASE_URL; ?>/index.php?page=registerApplications">Voir les demandes
+                                    d\'inscription</a></li>
+                            <li><a href="<?= BASE_URL; ?>/index.php?page=slotsApplications">Voir les demandes de
+                                    place</a></li>
                             <li role="separator" class="divider"></li>
-                            <li><a href="<?= BASE_URL;?>/index.php?page=parkingScheme">Schéma du parking</a></li>
-                            <li><a href="<?= BASE_URL;?>/index.php?page=manageUser">Gestion des utilisateurs</a></li>
-                        </ul>', ''); ?>
+                            <li><a href="<?= BASE_URL; ?>/index.php?page=parkingScheme">Schéma du parking</a></li>
+                            <li><a href="<?= BASE_URL; ?>/index.php?page=manageUser">Gestion des utilisateurs</a></li>
+                        </ul>
+                    <?php } ?>
                 </li>
                 <li class="dropdown">
-                    <?= $this->eIf($object['user']->isConnected(), '<a href="'.BASE_URL.'/index.php?page=slotApplications">Réserver une place</a>', ''); ?>
+                    <?= $this->eIf($object['user']->isConnected(), '<a href="' . BASE_URL . '/index.php?page=slotApplications">Réserver une place</a>', ''); ?>
                 </li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
-                <?= $this->eIf($object['user']->isConnected(), '<li><a href="'.BASE_URL.'/index.php?page=userSpace">Profil</a></li>', ''); ?>
-                <?= $this->eIf($object['user']->isConnected(), '<li><a href="'.BASE_URL.'/index.php?page=disconnect">Déconnexion</a></li>', '<li><a href="<?= BASE_URL; ?>/index.php?page=login">Inscription / Connexion</a></li>'); ?>
-
-
+                <?= $this->eIf($object['user']->isConnected(), '<li><a href="' . BASE_URL . '/index.php?page=userSpace">Profil</a></li>', ''); ?>
+                <?= $this->eIf($object['user']->isConnected(), '<li><a href="' . BASE_URL . '/index.php?page=disconnect">Déconnexion</a></li>', '<li><a href="<?= BASE_URL; ?>/index.php?page=login">Inscription / Connexion</a></li>'); ?>
                 <li><a href="<?= BASE_URL; ?>/index.php?page=documentation">Documentation</a></li>
             </ul>
         </div>

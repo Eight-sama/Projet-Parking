@@ -48,9 +48,9 @@ class Authentication
         }
     }
 
-    public function isAdmin($id)
+    public function isAdmin($lvl)
     {
-        if ($id == self::ID_ADMIN) {
+        if ($lvl == 2) {
             return true;
         } else {
             return false;
