@@ -1,13 +1,21 @@
 <?php
+
 namespace PPEParking\Controllers;
 
 use App\Functions;
 use PPEParking\Models\Authentication;
 
-class SlotApplications extends Functions{
+class SlotApplications extends Functions
+{
 
-    public function start(){
+    public function start()
+    {
         $user = new Authentication();
-        $this->display('slotApplications', array('user' => $user));
+        if (isset($_SESSION) && $user->isAdmin($_SESSION['lvl'])) {
+            $this->display('slotApplicationsAdmin', array('user' => $user));
+        }
+        else{
+            $this->display('slotApplications', array('user' => $user));
+        }
     }
 }

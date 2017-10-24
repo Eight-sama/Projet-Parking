@@ -39,7 +39,7 @@
                            aria-expanded="false">Administration <span class="caret"></span></a>
                         <ul class="dropdown-menu">
                             <li><a href="<?= BASE_URL; ?>/index.php?page=registerApplications">Voir les demandes
-                                    d\'inscription</a></li>
+                                    d'inscription</a></li>
                             <li><a href="<?= BASE_URL; ?>/index.php?page=slotsApplications">Voir les demandes de
                                     place</a></li>
                             <li role="separator" class="divider"></li>
