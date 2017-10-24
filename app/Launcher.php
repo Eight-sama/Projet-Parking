@@ -7,7 +7,7 @@ use PPEParking\Controllers\Login;
 use PPEParking\Controllers\RegisterApplication;
 use PPEParking\Controllers\ApplyRegisterApp;
 use PPEParking\Controllers\NotFound;
-use PPEParking\Controllers\UserSpace;
+use PPEParking\Controllers\SlotApplications;
 
 /**
  * Class Launcher
@@ -59,6 +59,10 @@ class Launcher
         if($page == 'login'){
             $loginController = new Login();
             $loginController->start();
+        }
+        if($page == 'slotApplications'){
+            $slotApplicationsController = new SlotApplications();
+            $slotApplicationsController->start();
         }
         if($page == 'applyRegisterApp'){
             $applyRegisterAppController = new ApplyRegisterApp();

@@ -45,7 +45,7 @@
                         </ul>', ''); ?>
                 </li>
                 <li class="dropdown">
-                    <?= $this->eIf($object['user']->isConnected(), '<a href="'.BASE_URL.'/index.php?page=slotsApplications">Réserver une place</a>', ''); ?>
+                    <?= $this->eIf($object['user']->isConnected(), '<a href="'.BASE_URL.'/index.php?page=slotApplications">Réserver une place</a>', ''); ?>
                 </li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
