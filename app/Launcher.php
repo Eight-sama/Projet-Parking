@@ -8,6 +8,7 @@ use PPEParking\Controllers\RegisterApplication;
 use PPEParking\Controllers\ApplyRegisterApp;
 use PPEParking\Controllers\NotFound;
 use PPEParking\Controllers\SlotApplications;
+use PPEParking\Controllers\ParkingScheme;
 
 /**
  * Class Launcher
@@ -59,6 +60,10 @@ class Launcher
         if($page == 'login'){
             $loginController = new Login();
             $loginController->start();
+        }
+        if($page == 'parkingScheme'){
+            $parkingSchemeController = new ParkingScheme();
+            $parkingSchemeController->start();
         }
         if($page == 'slotApplications'){
             $slotApplicationsController = new SlotApplications();

@@ -34,7 +34,7 @@
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
                 <li class="dropdown">
-                    <?php if ($object['user']->isConnected() && $object['user']->isAdmin($_SESSION['lvl'])) { ?>
+                    <?php if ($object['user']->isConnected() && $object['user']->isAdmin($_SESSION['lvl'])): ?>
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
                            aria-expanded="false">Administration <span class="caret"></span></a>
                         <ul class="dropdown-menu">
@@ -46,12 +46,12 @@
                             <li><a href="<?= BASE_URL; ?>/index.php?page=parkingScheme">Schéma du parking</a></li>
                             <li><a href="<?= BASE_URL; ?>/index.php?page=manageUser">Gestion des utilisateurs</a></li>
                         </ul>
-                    <?php } ?>
+                    <?php endif ?>
                 </li>
                 <li class="dropdown">
-                    <?php if ($object['user']->isConnected() && $object['user']->isAdmin($_SESSION['lvl'])) { ?>
-                    <?= $this->eIf($object['user']->isConnected(), '<a href="' . BASE_URL . '/index.php?page=slotApplications">Réserver une place</a>', ''); ?>
-                    <?php } ?>
+                    <?php if ($object['user']->isConnected() && !($object['user']->isAdmin($_SESSION['lvl']))): ?>
+                        <a href="' . BASE_URL . '/index.php?page=slotApplications">Réserver une place</a>
+                    <?php endif ?>
                 </li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
