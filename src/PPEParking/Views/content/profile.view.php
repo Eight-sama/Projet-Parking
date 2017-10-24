@@ -22,11 +22,11 @@
                             <div class="tab-pane fade active in" id="login">
                                 <form method="post">
                                     <label for=""><h4>Email:</h4></label>
-                                    <input class="form-control" type="text" name="login" value="<?= $object['user']->getUserInfo($_SESSION['id'], 'email'); ?>"/>
-                                    <h4>Nom:<input class="form-control" type="text" name="nom"
-                                                   value="<?php echo $rep['nom']; ?>"/></h4>
-                                    <h4>Prénom:<input class="form-control" type="text" name="prenom"
-                                                      value="<?php echo $rep['prenom']; ?>"/></h4>
+                                    <input class="form-control" type="text" name="email" value="<?= $object['user']->getUserInfo($_SESSION['id'],'email'); ?>"/>
+                                    <label for=""><h4>Nom:</h4></label>
+                                    <input class="form-control" type="text" name="surname" value="<?= $object['user']->getUserInfo($_SESSION['id'],'surname'); ?>"/>
+                                    <label for=""><h4>Prenom:</h4></label>
+                                    <input class="form-control" type="text" name="name" value="<?= $object['user']->getUserInfo($_SESSION['id'],'name'); ?>"/>
                                     <button class="btn btn-default" type="submit" name="case1"><i class="fa fa-refresh "></i>Update</button>
                                 </form>
                                 <?php if (isset($message_co)) {

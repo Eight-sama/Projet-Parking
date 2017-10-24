@@ -50,7 +50,7 @@ class Authentication
 
     public function isAdmin($id)
     {
-        if ($this->getUserInfo($id, "lvl") == self::ID_ADMIN) {
+        if ($id == self::ID_ADMIN) {
             return true;
         } else {
             return false;
@@ -71,9 +71,10 @@ class Authentication
     public function getUserInfo($id, $column)
     {
         global $db;
-        $request = $db->prepare("SELECT ? FROM user WHERE id_u = ?");
-        $request->execute([$column, $id]);
-        return $request->fetch();
+        $request = $db->query("SELECT ".$column." FROM user WHERE id_u = $id");
+        if($response = $request->fetch()){
+            return $response[$column];
+        }
     }
 
     public function majMdp($mdp)
