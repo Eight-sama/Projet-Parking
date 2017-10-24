@@ -3,10 +3,10 @@ namespace PPEParking\Models;
 
 class Connect{
 
-    public function connect_bdd(){
+    public function connectDb(){
         try
         {
-            $bdd = new PDO("mysql:host=localhost;dbname=parking;charset=utf8","root","");
+            $db = new PDO("mysql:host=localhost;dbname=parking;charset=utf8","root","");
         }
         catch(Exception $e)
         {

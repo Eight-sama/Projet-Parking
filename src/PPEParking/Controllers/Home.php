@@ -2,25 +2,12 @@
 namespace PPEParking\Controllers;
 
 use App\Functions;
-use PPEParking\Models\Authentification;
+use PPEParking\Models\Authentication;
 
 class Home extends Functions{
-    private $mod;
-
-    public function __construct()
-    {
-        $this->mod = new Authentification();
-    }
-    /**
-     * @return mixed
-     */
-    public function getMod()
-    {
-        return $this->mod;
-    }
 
     public function start(){
-        $this->display('home');
+        $user = new Authentication();
+        $this->display('home', array('user' => $user));
     }
-
 }
