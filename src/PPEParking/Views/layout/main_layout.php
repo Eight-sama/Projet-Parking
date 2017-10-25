@@ -65,7 +65,6 @@
 
 <?= $content; ?>
 
-<script src="<?= BASE_URL ?>/web/js/custom.js"></script>
 <script src="<?= BASE_URL ?>/web/js/bootstrap.min.js"></script>
 </body>
 
