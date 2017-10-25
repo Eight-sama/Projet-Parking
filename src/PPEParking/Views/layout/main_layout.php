@@ -41,10 +41,7 @@
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
                            aria-expanded="false">Administration <span class="caret"></span></a>
                         <ul class="dropdown-menu">
-                            <li><a href="<?= BASE_URL; ?>/index.php?page=registerApplications">Voir les demandes
-                                    d'inscription</a></li>
-                            <li><a href="<?= BASE_URL; ?>/index.php?page=slotApplications">Voir les demandes de
-                                    place</a></li>
+                            <li><a href="<?= BASE_URL; ?>/index.php?page=registerSlotApplications">Gérer les demandes de place et d'inscription</a></li>
                             <li role="separator" class="divider"></li>
                             <li><a href="<?= BASE_URL; ?>/index.php?page=parkingScheme">Schéma du parking</a></li>
                             <li><a href="<?= BASE_URL; ?>/index.php?page=manageUser">Gestion des utilisateurs</a></li>

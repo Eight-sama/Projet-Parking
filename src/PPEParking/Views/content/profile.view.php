@@ -37,7 +37,7 @@
                                 </div>
                                 <br>
                                 <button class="btn btn-default" type="submit" name="case1"><i
-                                            class="fa fa-refresh "></i>Mettre à jour
+                                            class="fa fa-refresh "></i> Mettre à jour
                                 </button>
                             </form>
                             <?php if (isset($message_co)) {
