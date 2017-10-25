@@ -8,6 +8,7 @@
     <title>Lucapark - Le parking de vos rêves</title>
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" media="screen" href="<?= BASE_URL ?>/web/css/bootstrap.min.css">
+    <link rel="stylesheet" media="screen" href="<?= BASE_URL ?>/web/css/font-awesome.css">
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn t work if you view the page via file:// -->
     <!--[if lt IE 9]>
