@@ -11,6 +11,7 @@ use PPEParking\Controllers\SlotApplications;
 use PPEParking\Controllers\ParkingScheme;
 use PPEParking\Controllers\RegisterApplications;
 use PPEParking\Controllers\Disconnect;
+use PPEParking\Controllers\ManageUser;
 
 /**
  * Class Launcher
@@ -58,6 +59,10 @@ class Launcher
         if($page == 'home'){
             $homeController = new Home();
             $homeController->start();
+        }
+        if($page == 'manageUser'){
+            $manageUserController = new ManageUser();
+            $manageUserController->start();
         }
         if($page == 'login'){
             $loginController = new Login();
