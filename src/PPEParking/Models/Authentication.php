@@ -35,7 +35,7 @@ class Authentication
             $_SESSION['id'] = $response['id_u'];
             $_SESSION['lvl'] = $response['lvl'];
             $_SESSION['email'] = $response['email'];
-            $function->header('index.php?page=profile');
+            header('Location: '.BASE_URL.'/index.php?page=profile');
         }
     }
 
