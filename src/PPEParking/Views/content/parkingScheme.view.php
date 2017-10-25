@@ -1,18 +1,57 @@
 <div class="container">
-    <div class="row">
-        <div class="col-md-12">
-            <div class="col-md-4">
-                <div class="list-group">
-                    <a href="#" class="list-group-item disabled">
-                        Cras justo odio
-                    </a>
-                    <a href="#" class="list-group-item">Dapibus ac facilisis in</a>
-                    <a href="#" class="list-group-item">Morbi leo risus</a>
-                    <a href="#" class="list-group-item">Porta ac consectetur ac</a>
-                    <a href="#" class="list-group-item">Vestibulum at eros</a>
-                </div></div>
-            <div class="col-md-4"></div>
-            <div class="col-md-4"></div>
+    <div class="row" style="margin:10px;">
+        <div class="col-xs-12">
+            <div class="col-xs-12">
+                <?php while ($response = $object['request_a']->fetch()): ?>
+                    <a href="#" id="<?= $response['id_s']; ?>"
+                       class="btn btn-default col-xs-1 <?= ($response['state_s'] == 1) ? 'disabled' : ''; ?>"><?= $response['name_s']; ?></a>
+                <?php endwhile ?>
+            </div>
+        </div>
+    </div>
+    <div class="row" style="margin:10px;">
+        <div class="col-xs-12">
+            <div class="col-xs-12">
+                <?php while ($response = $object['request_b']->fetch()): ?>
+                    <a href="#" id="<?= $response['id_s']; ?>"
+                       class="btn btn-default col-xs-1 <?= ($response['state_s'] == 1) ? 'disabled' : ''; ?>"><?= $response['name_s']; ?></a>
+                <?php endwhile ?>
+            </div>
+        </div>
+    </div>
+    <div class="row" style="margin:10px;">
+        <div class="col-xs-12">
+            <div class="col-xs-12">
+                <?php while ($response = $object['request_c']->fetch()): ?>
+                    <a href="#" id="<?= $response['id_s']; ?>"
+                       class="btn btn-default col-xs-1 <?= ($response['state_s'] == 1) ? 'disabled' : ''; ?>"><?= $response['name_s']; ?></a>
+                <?php endwhile ?>
+            </div>
         </div>
     </div>
 </div>
+<div id="myalertbox" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-body">
+                <button type="button" class="close" data-dismiss="modal">$times;</button>
+                hello world !
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-parimary" data-dismiss="modal">OK</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(document).ready(function () {
+        $("a").click(function () {
+            $("#myalertbox").modal({
+                "backdrop"  : "static",
+                "keyboard"  : true,
+                "show"      : true
+            });
+        });
+    });
+</script>
