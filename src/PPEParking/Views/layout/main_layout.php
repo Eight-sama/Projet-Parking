@@ -15,6 +15,8 @@
     <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
     <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
+    <script src="<?= BASE_URL ?>/web/js/jquery-3.2.1.min.js"></script>
+    <script type="text/javascript" src="<?= BASE_URL ?>/web/js/alert.js"></script>
 </head>
 
 <body>
@@ -66,7 +68,6 @@
 
 <?= $content; ?>
 
-<script src="<?= BASE_URL ?>/web/js/jquery-3.2.1.min.js"></script>
 <script src="<?= BASE_URL ?>/web/js/custom.js"></script>
 <script src="<?= BASE_URL ?>/web/js/bootstrap.min.js"></script>
 </body>
