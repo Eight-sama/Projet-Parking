@@ -9,6 +9,7 @@ class Profile extends Functions
 {
     public function start()
     {
+        global $db;
         $user = new Authentication();
         if (isset($_POST['submit'])) {
             $user->updateSelfProfile();
@@ -18,6 +19,8 @@ class Profile extends Functions
             } elseif (isset($_GET['notauthorize'])) {
                 $this->display('notAuthorized', array('user' => $user));
             } else {
+                $request_on = $db->query("SELECT * FROM reserve WHERE id_u = '".$_SESSION['id']."'");
+                $request_slot = $db->query("SELECT * FROM reserve r, slot s WHERE id_u = '".$_SESSION['id']."' AND r.id_s = s.id_s");
                 $this->display('profile', array('user' => $user));
             }
         }

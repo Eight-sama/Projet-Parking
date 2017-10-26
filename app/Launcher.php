@@ -3,8 +3,6 @@ namespace App;
 
 use PPEParking\Controllers\Profile;
 use PPEParking\Controllers\Home;
-use PPEParking\Controllers\Login;
-use PPEParking\Controllers\RegisterApplication;
 use PPEParking\Controllers\ApplyRegisterApp;
 use PPEParking\Controllers\NotFound;
 use PPEParking\Controllers\ParkingScheme;
@@ -90,14 +88,6 @@ class Launcher
             $parkingSchemeController = new ParkingScheme();
             $parkingSchemeController->start();
         }
-        if($page == 'registerApplications'){
-            $registerApplicationsController = new RegisterApplications();
-            $registerApplicationsController->start();
-        }
-        if($page == 'slotApplications'){
-            $slotApplicationsController = new SlotApplications();
-            $slotApplicationsController->start();
-        }
         if($page == 'applyRegisterApp'){
             $applyRegisterAppController = new ApplyRegisterApp();
             $applyRegisterAppController->start();
@@ -105,10 +95,6 @@ class Launcher
         if($page == 'profile'){
             $profileController = new Profile();
             $profileController->start();
-        }
-        if($page == 'registerApplication'){
-            $registerApplicationController = new RegisterApplication();
-            $registerApplicationController->start();
         }
         if($page == 'disconnect'){
             $disconnectController = new Disconnect();
