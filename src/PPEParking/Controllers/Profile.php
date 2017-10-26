@@ -13,7 +13,13 @@ class Profile extends Functions
         if (isset($_POST['submit'])) {
             $user->updateSelfProfile();
         } else {
-            $this->display('profile', array('user' => $user));
+            if (isset($_GET['error'])) {
+                $this->display('loginError', array('user' => $user));
+            } elseif (isset($_GET['notauthorize'])) {
+                $this->display('notAuthorized', array('user' => $user));
+            } else {
+                $this->display('profile', array('user' => $user));
+            }
         }
     }
 }

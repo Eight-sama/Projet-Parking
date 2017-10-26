@@ -32,11 +32,19 @@ class Authentication
         $password = sha1($_POST['password']);
         $request = $db->query("SELECT * FROM user WHERE email ='" . $email . "' AND password = '" . $password . "'");
         if ($response = $request->fetch()) {
-            $_SESSION['connected'] = true;
-            $_SESSION['id'] = $response['id_u'];
-            $_SESSION['lvl'] = $response['lvl'];
-            $_SESSION['email'] = $response['email'];
-            header('Location: '.BASE_URL.'/index.php?page=profile');
+            if($response['lvl'] > 0){
+                $_SESSION['connected'] = true;
+                $_SESSION['id'] = $response['id_u'];
+                $_SESSION['lvl'] = $response['lvl'];
+                $_SESSION['email'] = $response['email'];
+                header('Location: ' . BASE_URL . '/index.php?page=profile');
+            }
+            else{
+                session_destroy();
+                header('Location: ' . BASE_URL . '/index.php?page=profile&notauthorized=yes');
+            }
+        } else {
+            header('Location: ' . BASE_URL . '/index.php?page=profile&error=yes');
         }
     }
 
@@ -141,10 +149,9 @@ class Authentication
                 $request->bindValue(":id", $_SESSION['id'], PDO::PARAM_INT);
                 $request->execute();
                 $this->sql_check_error($request);
-                header('Location: '.BASE_URL.'/index.php?page=profile&alert=success');
-            }
-            else{
-                header('Location: '.BASE_URL.'/index.php?page=profile&alert=failure');
+                header('Location: ' . BASE_URL . '/index.php?page=profile&alert=success');
+            } else {
+                header('Location: ' . BASE_URL . '/index.php?page=profile&alert=failure');
             }
             if ($_POST['surname'] != "") {
                 $request = $db->prepare('UPDATE user SET surname = :surname WHERE id_u = :id');
@@ -152,10 +159,9 @@ class Authentication
                 $request->bindValue(":id", $_SESSION['id'], PDO::PARAM_INT);
                 $request->execute();
                 $this->sql_check_error($request);
-                header('Location: '.BASE_URL.'/index.php?page=profile&alert=success');
-            }
-            else{
-                header('Location: '.BASE_URL.'/index.php?page=profile&alert=failure');
+                header('Location: ' . BASE_URL . '/index.php?page=profile&alert=success');
+            } else {
+                header('Location: ' . BASE_URL . '/index.php?page=profile&alert=failure');
             }
             if ($_POST['name'] != "") {
                 $request = $db->prepare('UPDATE user SET name = :name WHERE id_u = :id');
@@ -163,10 +169,9 @@ class Authentication
                 $request->bindValue(":id", $_SESSION['id'], PDO::PARAM_INT);
                 $request->execute();
                 $this->sql_check_error($request);
-                header('Location: '.BASE_URL.'/index.php?page=profile&alert=success');
-            }
-            else{
-                header('Location: '.BASE_URL.'/index.php?page=profile&alert=failure');
+                header('Location: ' . BASE_URL . '/index.php?page=profile&alert=success');
+            } else {
+                header('Location: ' . BASE_URL . '/index.php?page=profile&alert=failure');
             }
             if ($_POST['password'] != "") {
                 $request = $db->prepare('UPDATE user SET password = :password WHERE id_u = :id');
@@ -174,37 +179,32 @@ class Authentication
                 $request->bindValue(":id", $_SESSION['id'], PDO::PARAM_INT);
                 $request->execute();
                 $this->sql_check_error($request);
-                header('Location: '.BASE_URL.'/index.php?page=profile');
+                header('Location: ' . BASE_URL . '/index.php?page=profile');
+            } else {
+                header('Location: ' . BASE_URL . '/index.php?page=profile&alert=failure');
             }
-            else{
-                header('Location: '.BASE_URL.'/index.php?page=profile&alert=failure');
-            }        
         }
     }
 
-    public function ajoutDemandePlace($id)
+    public function applyRegister()
     {
-        global $bdd;
-        $requete = $bdd->prepare("Update user set lvl = 2 WHERE  id_u=:id ");
-        $requete->bindValue(":id", $id, PDO::PARAM_INT);
-        $requete->execute();
+        global $db;
+        $application_date = date('d/m/Y');
+        $request = $db->prepare('INSERT INTO user(surname,name,email,password,date_register) VALUES (:surname,:name,:email,:password,:date)');
+        $request->bindValue(":surname", $_POST['surname'], PDO::PARAM_STR);
+        $request->bindValue(":name", $_POST['name'], PDO::PARAM_STR);
+        $request->bindValue(":email", $_POST['email'], PDO::PARAM_STR);
+        $request->bindValue(":password", sha1($_POST['password']), PDO::PARAM_STR);
+        $request->bindValue(":date", $application_date, PDO::PARAM_STR);
+        $request->execute();
+        $this->sql_check_error($request);
+        header('Location: '.BASE_URL.'/index.php?page=applyRegisterApp&registered=yes');
     }
 
-    public function dispSlotAppl()
+    public function sql_check_error($statement)
     {
-
-        global $bdd;
-
-        $req = 'SELECT * FROM user WHERE lvl = 2';
-        $requete = $bdd->query($req);
-
-        return ($data = $requete->fetch());
-    }
-
-    public function sql_check_error($statement){
         global $db;
         $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        $db->exec($statement);
     }
 
     public function displayInfoUser()

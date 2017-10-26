@@ -8,6 +8,10 @@ class ConfirmSlotApp extends Functions{
 
     public function start(){
         $user = new Authentication();
-        $this->display('confirmSlotApp', array('user' => $user));
+        if($user->isConnected() && $user->onQueue()){
+            $this->display('queueSlotApp', array('user' => $user));
+        } else{
+            $this->display('confirmSlotApp', array('user' => $user));
+        }
     }
 }
