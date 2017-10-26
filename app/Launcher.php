@@ -12,6 +12,7 @@ use PPEParking\Controllers\Disconnect;
 use PPEParking\Controllers\ManageUser;
 use PPEParking\Controllers\RegisterSlotApplications;
 use PPEParking\Controllers\ModifyUser;
+use PPEParking\Controllers\BanUser;
 
 /**
  * Class Launcher
@@ -67,6 +68,10 @@ class Launcher
         if($page == 'manageUser'){
             $manageUserController = new ManageUser();
             $manageUserController->start();
+        }
+        if($page == 'banUser'){
+            $banUserController= new BanUser();
+            $banUserController->start();
         }
         if($page == 'login'){
             $loginController = new Login();

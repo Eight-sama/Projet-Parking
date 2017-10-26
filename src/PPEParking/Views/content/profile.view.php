@@ -1,7 +1,7 @@
 <section id="user-space">
     <div class="container">
         <div class="row">
-            <h1>Bonjour Théo</h1>
+            <h1>Bonjour <?= $object['user']->getUserInfo($_SESSION['id'], 'name'); ?></h1>
             <br>
         </div>
         <div class="row">
@@ -18,12 +18,15 @@
                     </ul>
                     <div class="tab-content">
                         <div class="tab-pane fade active in" id="login">
-                            <form method="post">
+                            <form id="form-modify" action="#" method="post">
                                 <br>
                                 <div class="form-group">
                                     <label for="email">Email</label>
-                                    <input class="form-control" type="text" name="email"
+                                    <input class="form-control" type="text" id="email" name="email"
                                            value="<?= $object['user']->getUserInfo($_SESSION['id'], 'email'); ?>"/>
+                                </div>
+                                <div class="form-group">
+                                    <div id="error_email" style="color:red;"></div>
                                 </div>
                                 <div class="form-group">
                                     <label for="surname">Nom</label>
@@ -36,39 +39,27 @@
                                            value="<?= $object['user']->getUserInfo($_SESSION['id'], 'name'); ?>"/>
                                 </div>
                                 <br>
-                                <button class="btn btn-default" type="submit" name="case1"><i
+                                <button class="btn btn-default" type="submit" name="submit"><i
                                             class="fa fa-refresh "></i> Mettre à jour
                                 </button>
                             </form>
-                            <?php if (isset($message_co)) {
-                                echo $message_co;
-                            } ?>
                         </div>
                         <div class="tab-pane fade" id="mdp">
-                            <form method="post">
+                            <form id="form-modify-2" action="#" method="post">
                                 <br>
                                 <div class="form-group">
-                                    <label for="">Ancien mot de passe </label><input class="form-control"
-                                                                                     type="password" name="password"
-                                                                                     value=""/>
+                                    <label for="">Nouveau mot de passe </label><input class="form-control" id="password" type="password" name="password" value=""/></div>                                    
+                                <div class="form-group">
+                                    <label for="">Confirmez le mot de passe</label><input class="form-control" id="password2" type="password" name="password2" value=""/>
                                 </div>
                                 <div class="form-group">
-                                    <label for="">Nouveau mot de passe </label><input class="form-control"
-                                                                                      type="password" name="password2"
-                                                                                      value=""/></div>
-                                <div class="form-group">
-                                    <label for="">Confirmez le mot de passe</label><input class="form-control"
-                                                                                          type="password"
-                                                                                          name="password3" value=""/>
+                                    <div id="error_pwd" style="color:red;"></div>
                                 </div>
                                 <br>
-                                <button class="btn btn-default" type="submit" name="case3"><i
+                                <button class="btn btn-default" type="submit" name="submit"><i
                                             class=" fa fa-refresh "></i> Mettre à jour
                                 </button>
                             </form>
-                            <?php if (isset($message_case2)) {
-                                echo $message_case2;
-                            } ?>
                         </div>
                     </div>
                 </div>

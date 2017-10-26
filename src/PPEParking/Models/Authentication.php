@@ -3,6 +3,7 @@
 namespace PPEParking\Models;
 
 use App\Functions;
+use PDO;
 
 class Authentication
 {
@@ -132,19 +133,52 @@ class Authentication
 
     public function updateSelfProfile()
     {
-        if (isset($_POST['submit']) && $this->isConnected() && $_SESSION['id_u'] == $_GET['id_u']) {
-            if ($_POST['email'] != $this->getUserInfo($_GET['id_u'], 'email')) {
-
+        global $db;
+        if (isset($_POST['submit']) && $this->isConnected()) {
+            if ($_POST['email'] != "") {
+                $request = $db->prepare('UPDATE user SET email = :email WHERE id_u = :id');
+                $request->bindValue(":email", $_POST['email'], PDO::PARAM_STR);
+                $request->bindValue(":id", $_SESSION['id'], PDO::PARAM_INT);
+                $request->execute();
+                $this->sql_check_error($request);
+                header('Location: '.BASE_URL.'/index.php?page=profile&alert=success');
             }
-            if ($_POST['login'] != $this->getUserInfo($_GET['id_u'], 'login')) {
-
+            else{
+                header('Location: '.BASE_URL.'/index.php?page=profile&alert=failure');
             }
-            if ($_POST['surname'] != $this->getUserInfo($_GET['id_u'], 'surname')) {
-
+            if ($_POST['surname'] != "") {
+                $request = $db->prepare('UPDATE user SET surname = :surname WHERE id_u = :id');
+                $request->bindValue(":surname", $_POST['surname'], PDO::PARAM_STR);
+                $request->bindValue(":id", $_SESSION['id'], PDO::PARAM_INT);
+                $request->execute();
+                $this->sql_check_error($request);
+                header('Location: '.BASE_URL.'/index.php?page=profile&alert=success');
             }
-            if ($_POST['name'] != $this->getUserInfo($_GET['id_u'], 'name')) {
-
+            else{
+                header('Location: '.BASE_URL.'/index.php?page=profile&alert=failure');
             }
+            if ($_POST['name'] != "") {
+                $request = $db->prepare('UPDATE user SET name = :name WHERE id_u = :id');
+                $request->bindValue(":name", $_POST['name'], PDO::PARAM_STR);
+                $request->bindValue(":id", $_SESSION['id'], PDO::PARAM_INT);
+                $request->execute();
+                $this->sql_check_error($request);
+                header('Location: '.BASE_URL.'/index.php?page=profile&alert=success');
+            }
+            else{
+                header('Location: '.BASE_URL.'/index.php?page=profile&alert=failure');
+            }
+            if ($_POST['password'] != "") {
+                $request = $db->prepare('UPDATE user SET password = :password WHERE id_u = :id');
+                $request->bindValue(":password", sha1($_POST['password']), PDO::PARAM_STR);
+                $request->bindValue(":id", $_SESSION['id'], PDO::PARAM_INT);
+                $request->execute();
+                $this->sql_check_error($request);
+                header('Location: '.BASE_URL.'/index.php?page=profile');
+            }
+            else{
+                header('Location: '.BASE_URL.'/index.php?page=profile&alert=failure');
+            }        
         }
     }
 
@@ -167,51 +201,10 @@ class Authentication
         return ($data = $requete->fetch());
     }
 
-
-    public function validateReserv($id)
-    {
-
-        global $bdd;
-
-        $alert = "";
-
-        $req = "SELECT * FROM occuper WHERE id_u = 'null'  ";
-        $requete = $bdd->query($req);
-
-        $date_deb = date("Y-m-d H:i:s");
-
-        $date_explosee = explode(" ", $date_deb);
-        $jmd = $date_explosee[0];
-        $his = $date_explosee[1];
-
-        $date_explosee = explode("-", $date_deb);
-        $year = $date_explosee[0];
-        $mois = $date_explosee[1];
-        $jour = $date_explosee[2];
-
-
-        $date_fin = mktime(0, 0, 0, $mois, $jour + 7, $year);//durée fix a une semaine
-        $date_fin = date("Y-m-d H:i:s", $date_fin);
-
-
-        if ($requete->fetch()) {
-
-            $requete2 = $bdd->prepare("Update occuper set id_u = :id , date_deb = :date_deb , date_fin= :date_fin  WHERE id_u = 'null' limit 1 ");
-            $requete2->bindValue(":id", $id, PDO::PARAM_INT);
-            $requete2->bindValue(":date_deb", $date_deb, PDO::PARAM_INT);
-            $requete2->bindValue(":date_fin", $date_fin, PDO::PARAM_INT);
-            $requete2->execute();
-
-            $requete5 = $bdd->prepare("Update user set lvl = 4 where id_u = :id ");
-            $requete5->bindValue(":id", $id, PDO::PARAM_INT);
-            $requete5->execute();
-
-        } else {
-            $requete3 = $bdd->prepare("Update user set lvl = 3 ,  rg_fa = (select Max(rg_fa) from (Select * from user) as dtg )+1 where id_u = :id");
-            $requete3->bindValue(":id", $id, PDO::PARAM_INT);
-            $requete3->execute();
-
-        }
+    public function sql_check_error($statement){
+        global $db;
+        $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        $db->exec($statement);
     }
 
     public function displayInfoUser()
