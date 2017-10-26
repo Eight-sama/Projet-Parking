@@ -56,7 +56,7 @@
                                 <span><h4>Demande pour la place <?= $response['name_s'];?></b></h4></span>
                             </div>
                             <div class="panel-body">
-                                <span><small>Demande effectuée par <?= $response['surname']." ".$response['name'];?> le <?= $response['date_r']; ?></small></span>
+                                <span><small>Demande effectuée par <?= $response['surname']." ".$response['name'];?> le <?= $response['date_r_deb']; ?></small></span>
                                 <br><br>
                                 <a href="<?= BASE_URL; ?>/index.php?page=registerSlotApplications&acceptSlot=1&id=<?= $response['id_u']; ?>&id_slot=<?= $response['id_s'];?>"><i
                                             class="btn btn-success fa fa-plus"></i></a>&nbsp;&nbsp;&nbsp;<a
@@ -78,7 +78,7 @@
                                 <span><h4>Demande pour la place <?= $response['name_s'];?></b></h4></span>
                             </div>
                             <div class="panel-body">
-                                <span><small>Demande effectuée par <?= $response['surname']." ".$response['name'];?> le <?= $response['date_r']; ?></small></span>
+                                <span><small>Demande effectuée par <?= $response['surname']." ".$response['name'];?> le <?= $response['date_r_deb']; ?></small></span>
                             </div>
                         </div>
                     <?php endwhile ?>
@@ -95,7 +95,7 @@
                                 <span><h4>Demande pour la place <?= $response['name_s'];?></b></h4></span>
                             </div>
                             <div class="panel-body">
-                                <span><small>Demande effectuée par <?= $response['surname']." ".$response['name'];?> le <?= $response['date_r']; ?></small></span>
+                                <span><small>Demande effectuée par <?= $response['surname']." ".$response['name'];?> le <?= $response['date_r_deb']; ?></small></span>
                             </div>
                         </div>
                     <?php endwhile ?>

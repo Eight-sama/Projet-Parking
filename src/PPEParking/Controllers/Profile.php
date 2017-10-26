@@ -19,9 +19,13 @@ class Profile extends Functions
             } elseif (isset($_GET['notauthorize'])) {
                 $this->display('notAuthorized', array('user' => $user));
             } else {
-                $request_on = $db->query("SELECT * FROM reserve WHERE id_u = '".$_SESSION['id']."'");
+                $request_on = $db->query("SELECT * FROM reserve r, slot s WHERE id_u = '".$_SESSION['id']."' AND etat = 0 AND r.id_s = s.id_s");
                 $request_slot = $db->query("SELECT * FROM reserve r, slot s WHERE id_u = '".$_SESSION['id']."' AND r.id_s = s.id_s");
-                $this->display('profile', array('user' => $user));
+                $this->display('profile', array(
+                    'user' => $user,
+                    'request_on' => $request_on,
+                    'request_slot' => $request_slot,
+                    ));
             }
         }
     }

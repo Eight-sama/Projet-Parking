@@ -7,7 +7,6 @@
             <th>Surname</th>
             <th>Name</th>
             <th>Email</th>
-            <th>Slot owned</th>
             <th>Action</th>
         </tr>
         </thead>
@@ -18,7 +17,6 @@
                 <td><?= $response['surname'];?></td>
                 <td><?= $response['name'];?></td>
                 <td><?= $response['email'];?></td>
-                <td><?= $response['slot_owned'];?></td>
                 <td><a class="btn btn-warning" href="<?= BASE_URL; ?>/index.php?page=modifyUser&id=<?= $response['id_u'];?>">Modifier</a>
                     &nbsp;
                     <?php if($response['lvl'] != 2): ?>

@@ -48,9 +48,13 @@
                             <form id="form-modify-2" action="#" method="post">
                                 <br>
                                 <div class="form-group">
-                                    <label for="">Nouveau mot de passe </label><input class="form-control" id="password" type="password" name="password" value=""/></div>                                    
+                                    <label for="">Nouveau mot de passe </label><input class="form-control" id="password"
+                                                                                      type="password" name="password"
+                                                                                      value=""/></div>
                                 <div class="form-group">
-                                    <label for="">Confirmez le mot de passe</label><input class="form-control" id="password2" type="password" name="password2" value=""/>
+                                    <label for="">Confirmez le mot de passe</label><input class="form-control"
+                                                                                          id="password2" type="password"
+                                                                                          name="password2" value=""/>
                                 </div>
                                 <div class="form-group">
                                     <div id="error_pwd" style="color:red;"></div>
@@ -71,11 +75,13 @@
                     <span>Vos demandes de places en cours</span>
                 </div>
                 <div class="panel-body">
-                    <div class="panel">
-                        <span><b>Demande de la place : B-21</b></span>
-                        <br>
-                        <small>Effectuée le 10-08-2017 à 22:15</small>
-                    </div>
+                    <?php while ($response = $object['request_on']->fetch()): ?>
+                        <div class="panel panel-warning">
+                            <span><b>Demande de la place : <?= $response['name_s'];?></b></span>
+                            <br>
+                            <small>Effectuée le <?= $response['date_r_deb'];?></small>
+                        </div>
+                    <?php endwhile ?>
                 </div>
             </div>
         </div>
@@ -85,11 +91,13 @@
                     <span>Vos places</span>
                 </div>
                 <div class="panel-body">
-                    <div class="panel">
-                        <span><b>Place : B-21</b></span>
+                    <?php while ($response = $object['request_slot']->fetch()): ?>
+                    <div class="panel panel-success">
+                        <span><b>Place : <?= $response['name_s'];?></b></span>
                         <br>
-                        <small>Réservée jusqu'au 15-08-2017 à 22:15</small>
+                        <small>Réservée le <?= $response['date_r_deb'];?> jusq'au <?= $response['date_r_fin'];?></small>
                     </div>
+                    <?php endwhile ?>
                 </div>
             </div>
         </div>

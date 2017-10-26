@@ -41,7 +41,12 @@
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
                            aria-expanded="false">Administration <span class="caret"></span></a>
                         <ul class="dropdown-menu">
-                            <li><a href="<?= BASE_URL; ?>/index.php?page=registerSlotApplications">Gérer les demandes de place et d'inscription</a></li>
+                            <?php if ($object['user']->isConnected() && ($object['user']->isAdmin($_SESSION['lvl']))): ?>
+                                <li><a href="<?= BASE_URL; ?>/index.php?page=registerSlotApplications">Gérer les
+                                        demandes de place et d'inscription</a></li>
+
+                                <li><a href="<?= BASE_URL; ?>/index.php?page=manageSlots">Gérer les places</a></li>
+                            <?php endif ?>
                             <li role="separator" class="divider"></li>
                             <li><a href="<?= BASE_URL; ?>/index.php?page=parkingScheme">Schéma du parking</a></li>
                             <li><a href="<?= BASE_URL; ?>/index.php?page=manageUser">Gestion des utilisateurs</a></li>
