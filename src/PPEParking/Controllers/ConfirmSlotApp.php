@@ -8,10 +8,6 @@ class ConfirmSlotApp extends Functions{
 
     public function start(){
         $user = new Authentication();
-        if($user->isConnected()){
-            header('Location: '.BASE_URL.'/index.php?page=profile');
-        }else{
-        $this->display('home', array('user' => $user));
-        }
+        $this->display('confirmSlotApp', array('user' => $user));
     }
 }
