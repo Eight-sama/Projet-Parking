@@ -58,11 +58,11 @@
                         <a href="' . BASE_URL . '/index.php?page=slotApplications">Réserver une place</a>
                     <?php endif ?>
                 </li>
+                <li><a href="<?= BASE_URL; ?>/index.php?page=documentation">Documentation</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 <?= ($object['user']->isConnected()) ? '<li><a href="' . BASE_URL . '/index.php?page=profile">Profil</a></li>' : ''; ?>
                 <?= ($object['user']->isConnected()) ? '<li><a href="' . BASE_URL . '/index.php?page=disconnect">Déconnexion</a></li>' : ''; ?>
-                <li><a href="<?= BASE_URL; ?>/index.php?page=documentation">Documentation</a></li>
             </ul>
         </div>
     </div>
