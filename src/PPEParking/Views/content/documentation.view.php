@@ -22,7 +22,7 @@
             <hr>
             <div id="fonctions">
                 <h2>Fonctionnalités</h2>
-                <p>Les fonctionnalités ici présentent sont :
+                <p>Les fonctionnalités ici présentes sont :
                     <li>La modification du profil aussi bien du côté admin que utilisateur lambda</li>
                 <li>La demande d'inscription ou de la place qui peut être effectuée aussi bien du côté de l'admin que du côté de l'utilisateur</li>
                 <li>Le listing des places de parking et des utilisateurs qui peuvent être modifiés ou banni par l'admin.</li>
@@ -30,6 +30,21 @@
                 <li>Une vérification des champs lors de la saisie de mail ou de mot de passe dans l'espace profil.</li></p>
                 <br>
                 <p>De plus le site est entièrement accessible en local et permet une flexibilité par son design responsive.</p>
+            </div>
+            <hr>
+            <div id="connexion">
+                <h2>Connexion</h2>
+                <p>Pour vous connecter, veuillez vous rendre sur la page d'accueil et cliquer sur le "cliquez-ici" situé en dessous du bouton "Demander une inscription".<br>
+                   Ou alors vous pouvez vous rendre directement sur la page de connexion en >><a href="http://localhost/Projet-Parking/index.php?page=login" target="_blank">cliquant ici</a><<
+                    </p>
+                <br>
+            </div>
+            <div id="inscription">
+                <h2>Inscription</h2>
+                <p>Pour vous inscrire, veuillez vous rendre sur la page d'accueil et cliquer sur le bouton "Demander une inscription".<br>
+                   Ou alors vous pouvez vous rendre directement sur la page d'inscription en >><a href="http://localhost/Projet-Parking/index.php?page=applyRegisterApp" target="_blank">cliquant ici</a><<
+                    </p>
+                <br>
             </div>
 
         </div>
@@ -43,6 +58,8 @@
                 <li class="list-group-item"><a href="#user"><small style="padding-left: 10px;">Espace utilisateur</small></a></li>
                 <li class="list-group-item"><a href="#admin"><small style="padding-left: 10px;">Espace administrateur</small></a></li>
                 <li class="list-group-item"><a href="#local"><small style="padding-left: 10px;">Accès depuis le réseau local</small></a></li>
+                <li class="list-group-item"><a href="#connexion">Connexion</a></li>
+                <li class="list-group-item"><a href="#inscription">Inscription</a></li>
             </ul>
         </div>
     </div>
