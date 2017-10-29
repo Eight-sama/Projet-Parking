@@ -19,7 +19,8 @@ class RegisterSlotApplications extends Functions
             $request = $db->query("DELETE * FROM user WHERE id_u = '".$_GET['id']."'");
             header('Location: '.BASE_URL.'/index.php?page=registerSlotApplications');
         } elseif(isset($_GET['acceptSlot'])){
-            $request = $db->query("UPDATE reserve SET etat = 1 WHERE id_u = '".$_GET['id']."' AND id_s = '".$_GET['id_slot']."'");
+            $request = $db->query("UPDATE reserve SET etat = 1 WHERE id_u = '".$_GET['id']."' AND id_s = '".$_GET['id_slot']."' AND id_r IN ('".$_GET['id_r']."')");
+            $request = $db->query("DELETE FROM reserve WHERE id_u = '".$_GET['id']."' AND etat = 0");
             $request = $db->query("UPDATE slot SET state_s = 1 WHERE id_s = '".$_GET['id_slot']."'");
             header('Location: '.BASE_URL.'/index.php?page=registerSlotApplications');
         } elseif(isset($_GET['refuseSlot'])){
