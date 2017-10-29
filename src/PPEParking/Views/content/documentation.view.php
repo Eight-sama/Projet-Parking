@@ -46,6 +46,28 @@
                     </p>
                 <br>
             </div>
+            <div id="deconnexion">
+                <h2>Déconnexion</h2>
+                <p>Pour vous déconnecter, cliquez sur le bouton déconnexion en haut à droite de votre écran.
+                </p>
+                <br>
+                <img class="img-responsive img-thumbnail" src="<?= BASE_URL ?>/web/img/déconnexion.png">
+            </div>
+            <div id="modif_infos">
+                <h2>Modifications infos personnelles</h2>
+                <p>Vous pouvez modifier vos informations sur la page profil accessible depuis le bouton adjacent au bouton "Déconnexion" en haut à droite.
+                <br>
+                Ou cliquez simplement >><a href="http://localhost/Projet-Parking/index.php?page=applyRegisterApp" target="_blank">ici</a><<
+                </p>
+                <br>
+            </div>
+            <div id="deconnexion">
+                <h2>Déconnexion</h2>
+                <p>Pour vous déconnecter, cliquez sur le bouton déconnexion en haut à droite de votre écran.
+                </p>
+                <br>
+                <img class="img-responsive img-thumbnail" src="<?= BASE_URL ?>/web/img/déconnexion.png">
+            </div>
 
         </div>
         <div class="col-xs-4">
@@ -60,6 +82,8 @@
                 <li class="list-group-item"><a href="#local"><small style="padding-left: 10px;">Accès depuis le réseau local</small></a></li>
                 <li class="list-group-item"><a href="#connexion">Connexion</a></li>
                 <li class="list-group-item"><a href="#inscription">Inscription</a></li>
+                <li class="list-group-item"><a href="#deconnexion">Déconnexion</a></li>
+                <li class="list-group-item"><a href="#modif_infos">Modifications infos personnelles</a></li>
             </ul>
         </div>
     </div>
