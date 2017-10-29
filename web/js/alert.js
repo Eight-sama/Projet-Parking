@@ -1,7 +1,7 @@
 $(document).ready(function() {
     $(".parking-scheme-reservation").click(function() {
         $("#modal-text").html("Voulez-vous réserver la place " + $(this).html() + "?");
-        $("#yes").attr("href", "index.php?page=confirmSlotApp&id_slot=" + $(this).attr("id"));
+        $("#yes").attr("href", "index.php?page=beforeConfirmSlotApp&id_nb=" + $(this).attr("id"));
         $("#myalertbox").modal({
             "keyboard": true,
             "show": true

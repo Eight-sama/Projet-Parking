@@ -59,7 +59,7 @@
                             <div class="panel-body">
                                 <span><small>Demande effectuée par <?= $response['surname']." ".$response['name'];?> le <?= $response['date_r_deb']; ?></small></span>
                                 <br><br>
-                                <a href="<?= BASE_URL; ?>/index.php?page=registerSlotApplications&acceptSlot=1&id=<?= $response['id_u']; ?>&id_slot=<?= $response['id_s'];?>"><i
+                                <a href="<?= BASE_URL; ?>/index.php?page=registerSlotApplications&acceptSlot=1&id=<?= $response['id_u']; ?>&id_slot=<?= $response['id_s'];?>&id_r=<?= $response['id_r'];?>"><i
                                             class="btn btn-success fa fa-plus"></i></a>&nbsp;&nbsp;&nbsp;<a
                                         href="<?= BASE_URL; ?>/index.php?page=registerSlotApplications&refuseSlot=1&id=<?= $response['id_u']; ?>&id_slot=<?= $response['id_s'];?>"><i
                                             class="btn btn-danger fa fa-remove"></i></a>

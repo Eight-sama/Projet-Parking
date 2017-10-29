@@ -13,6 +13,7 @@ use PPEParking\Controllers\ModifyUser;
 use PPEParking\Controllers\BanUser;
 use PPEParking\Controllers\Login;
 use PPEParking\Controllers\ConfirmSlotApp;
+use PPEParking\Controllers\BeforeConfirmSlotApp;
 use PPEParking\Controllers\ManageSlots;
 use PPEParking\Controllers\Documentation;
 
@@ -70,6 +71,10 @@ class Launcher
         if($page == 'confirmSlotApp'){
             $confirmSlotAppController = new ConfirmSlotApp();
             $confirmSlotAppController->start();
+        }
+        if($page == 'beforeConfirmSlotApp'){
+            $beforeConfirmSlotAppController = new BeforeConfirmSlotApp();
+            $beforeConfirmSlotAppController->start();
         }
         if($page == 'modifyUser'){
             $modifyUserController = new ModifyUser();
