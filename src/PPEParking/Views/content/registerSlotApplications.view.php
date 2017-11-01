@@ -41,7 +41,7 @@
                 <li role="presentation"><a class="btn btn-primary" href="#onmodif">Voir les demandes en cours</a></li>
                 <li role="presentation"><a class="btn btn-success" href="#accepted">Voir les demandes acceptées</a></li>
                 <li role="presentation"><a class="btn btn-danger" href="#refused">Voir les demandes refusées</a></li>
-                <li role="presentation"><a class="btn btn-warning" href="#update_status_slot"><i class="fa fa-refresh"></i> Mettre à jour la liste</a></li>
+                <li role="presentation"><a class="btn btn-warning" href="<?= BASE_URL; ?>/index.php?page=registerSlotApplications"><i class="fa fa-refresh"></i> Mettre à jour la liste</a></li>
             </ul>
         </div>
         <br>
