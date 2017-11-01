@@ -18,7 +18,7 @@ class ApplyRegisterApp extends Functions
                 $this->display('confirmApplyRegApp', array('user' => $user));
             } else {
                 if (isset($_POST['submit'])) {
-                    $user->applyRegister();
+                    $user->insertApplyRegister();
                 } else {
                     $form = $this->input('text', 'email', 'Email');
                     $form .= $this->input('text', 'surname', 'Nom');

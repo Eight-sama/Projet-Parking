@@ -12,22 +12,9 @@ class Authentication
     const ID_USER = 1;
     const ID_ADMIN = 2;
 
-    public function inscription($surname, $name, $mdp, $email)
-    {
-        global $bdd;
-        $request = $bdd->prepare("INSERT INTO user(surname,name,email,mdp)  Values(:surname ,:name , :email , :mdp) ");
-        $request->bindValue(":surname", $surname, PDO::PARAM_STR);
-        $request->bindValue(":name", $name, PDO::PARAM_STR);
-        $request->bindValue(":email", $email, PDO::PARAM_STR);
-        $request->bindValue(":mdp", $mdp, PDO::PARAM_STR);
-        $request->execute();
-        return $request;
-    }
-
     public function login()
     {
         global $db;
-        $function = new Functions();
         $email = $_POST['email'];
         $password = sha1($_POST['password']);
         $request = $db->query("SELECT * FROM user WHERE email ='" . $email . "' AND password = '" . $password . "'");
@@ -38,13 +25,11 @@ class Authentication
                 $_SESSION['lvl'] = $response['lvl'];
                 $_SESSION['email'] = $response['email'];
                 header('Location: ' . BASE_URL . '/index.php?page=profile');
-            } else {
-                session_destroy();
-                header('Location: ' . BASE_URL . '/index.php?page=profile&notauthorized=yes');
+                return true;
             }
-        } else {
-            header('Location: ' . BASE_URL . '/index.php?page=profile&error=yes');
+            return false;
         }
+        return false;
     }
 
     public function isUser($id)
@@ -85,36 +70,26 @@ class Authentication
         }
     }
 
-    public function majMdp($mdp)
+    public function getUserInfoFromId()
     {
-        global $bdd;
-        $request = $bdd->prepare("UPDATE user SET mdp = :mdp WHERE id_u=" . $_SESSION['id']);
-        $request->execute(array('mdp' => $mdp));
-    }
-
-    public function getEmail($email)
-    {
-        global $bdd;
-        $request = $bdd->prepare("SELECT * FROM user WHERE email = ?");
-        $request->execute(array($email));
+        global $db;
+        $request = $db->query("SELECT * FROM user WHERE id_u =" . $_GET['id']);
         return $request;
     }
 
-    public function majEmail($email)
+    public function getAllUsersInfos()
     {
-        global $bdd;
-        $request = $bdd->prepare("UPDATE user SET email = :email WHERE id_u=" . $_SESSION['id']);
-        $request->execute(array(
-            'email' => $email
-        ));
+        global $db;
+        return $db->query("SELECT * FROM user");
     }
 
-    public function getMdp()
+    public function insertConfirmSlotApp()
     {
-        global $bdd;
-        $request = $bdd->query("SELECT mdp FROM user WHERE id_u =" . $_SESSION['id']);
-        $request = $request->fetch();
-        return $request;
+        global $db;
+        $state = 0;
+        $request = $db->prepare("INSERT INTO reserve(id_s,id_u,date_r_deb,etat,date_r_fin) VALUES (?,?,?,?,?)");
+        $request->execute([$_GET['id_slot'], $_SESSION['id'], date('Y-m-d'), $state, date('Y-m-d')]);
+        $this->sql_check_error($request);
     }
 
     public function updateOtherProfile()
@@ -185,7 +160,7 @@ class Authentication
         }
     }
 
-    public function applyRegister()
+    public function insertApplyRegister()
     {
         global $db;
         $application_date = date('d/m/Y');
@@ -214,6 +189,48 @@ class Authentication
         return $response;
     }
 
+
+    public function updateUserAccept()
+    {
+        global $db;
+        $db->query("UPDATE user SET lvl = 1 WHERE id_u = '" . $_GET['id'] . "'");
+    }
+
+    public function updateUserRefuse()
+    {
+        global $db;
+        $db->query("DELETE * FROM user WHERE id_u = '" . $_GET['id'] . "'");
+    }
+
+    public function updateSlotAccept()
+    {
+        global $db;
+        $db->query("UPDATE reserve SET etat = 1 WHERE id_u = '" . $_GET['id'] . "' AND id_s = '" . $_GET['id_slot'] . "' AND id_r = '" . $_GET['id_r'] . "'");
+        $db->query("DELETE FROM reserve WHERE id_u = '" . $_GET['id'] . "' AND etat = 0");
+        $db->query("UPDATE slot SET state_s = 1 WHERE id_s = '" . $_GET['id_slot'] . "'");
+    }
+
+    public function updateSlotRefuse()
+    {
+        global $db;
+        $db->query("UPDATE reserve SET etat = 2 WHERE id_u = '" . $_GET['id'] . "' AND id_s = '" . $_GET['id_slot'] . "'");
+    }
+
+    public function getRequestCheck(){
+        global $db;
+        return $db->query("SELECT id_u FROM reserve Where id_s='".$_GET['id_nb']."'  AND id_u='".$_SESSION['id']."'");
+    }
+    public function getRequestNb(){
+        global $db;
+        return $db->query("SELECT COUNT(DISTINCT id_u) AS nb FROM reserve WHERE id_s='".$_GET['id_nb']."'");
+    }
+    public function getRegisterUserOnModif()
+    {
+        global $db;
+        $request = $db->query("SELECT * FROM user WHERE lvl = 0");
+        return $request;
+    }
+
     public function getUserSlotApps()
     {
         global $db;
@@ -226,5 +243,39 @@ class Authentication
         global $db;
         $request_on = $db->query("SELECT * FROM reserve r, slot s WHERE id_u = '" . $_SESSION['id'] . "' AND r.id_s = s.id_s");
         return $request_on;
+    }
+
+    public function getAllSlotsInfos()
+    {
+        global $db;
+        return $db->query("SELECT * FROM slot");
+    }
+
+    public function getRequestOnModif()
+    {
+        global $db;
+        $request = $db->query("SELECT * FROM reserve r, user u, slot s WHERE etat = 0 AND u.id_u = r.id_u AND s.id_s = r.id_s");
+        return $request;
+    }
+
+    public function getAcceptedRequest()
+    {
+        global $db;
+        $request = $db->query("SELECT * FROM reserve r, user u, slot s WHERE etat = 1 AND u.id_u = r.id_u AND s.id_s = r.id_s");
+        return $request;
+    }
+
+    public function getRefusedRequest()
+    {
+        global $db;
+        $request = $db->query("SELECT * FROM reserve r, user u, slot s WHERE etat = 2 AND u.id_u = r.id_u AND s.id_s = r.id_s");
+        return $request;
+    }
+
+    public function getSlotType($type)
+    {
+        global $db;
+        $request = $db->query("SELECT * FROM slot WHERE type_s = '" . $type . "'");
+        return $request;
     }
 }

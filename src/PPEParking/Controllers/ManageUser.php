@@ -7,9 +7,8 @@ use PPEParking\Models\Authentication;
 class ManageUser extends Functions{
 
     public function start(){
-        global $db;
         $user = new Authentication();
-        $request = $db->query("SELECT * FROM user");
+        $request = $user->getAllUsersInfos();
         $this->display('manageUser', array('user' => $user, 'request' => $request));
     }
 }

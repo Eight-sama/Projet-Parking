@@ -10,9 +10,8 @@ class ManageSlots extends Functions
 
     public function start()
     {
-        global $db;
         $user = new Authentication();
-        $request = $db->query("SELECT * FROM slot");
+        $request = $user->getAllSlotsInfos();
         $this->display('manageSlots', array(
             'user' => $user,
             'request' => $request,

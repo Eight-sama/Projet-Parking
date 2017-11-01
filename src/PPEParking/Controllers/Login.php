@@ -15,7 +15,13 @@ class Login extends Functions
             header('Location: '.BASE_URL.'/index.php?page=profile');
         }else{
             if (isset($_POST['submit'])) {
-                $user->login();
+                if($user->login()){
+                    header('Location: '.BASE_URL.'/index.php?page=profile');
+                }
+                else{
+                    session_destroy();
+                    $this->display('notAuthorized', array('user' => $user));
+                }
             } else {
                 $form = $this->input('text', 'email', 'Email');
                 $form .= $this->input('password', 'password', 'Password');

@@ -49,13 +49,13 @@
                             <?php endif ?>
                             <li role="separator" class="divider"></li>
                             <li><a href="<?= BASE_URL; ?>/index.php?page=parkingScheme">Schéma du parking</a></li>
-                            <li><a href="<?= BASE_URL; ?>/index.php?page=manageUser">Gestion des utilisateurs</a></li>
+                            <li><a href="<?= BASE_URL; ?>/index.php?page=manageUser">Gérer les utilisateurs</a></li>
                         </ul>
                     <?php endif ?>
                 </li>
                 <li class="dropdown">
                     <?php if ($object['user']->isConnected() && !($object['user']->isAdmin($_SESSION['lvl']))): ?>
-                        <a href="' . BASE_URL . '/index.php?page=slotApplications">Réserver une place</a>
+                        <a href="<?= BASE_URL; ?>/index.php?page=parkingScheme">Réserver une place</a>
                     <?php endif ?>
                 </li>
                 <li><a href="<?= BASE_URL; ?>/index.php?page=documentation">Documentation</a></li>

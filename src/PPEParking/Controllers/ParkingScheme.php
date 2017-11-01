@@ -10,11 +10,10 @@ class ParkingScheme extends Functions
 
     public function start()
     {
-        global $db;
         $user = new Authentication();
-        $request_c = $db->query("SELECT * FROM slot WHERE type_s = 'C'");
-        $request_b = $db->query("SELECT * FROM slot WHERE type_s = 'B'");
-        $request_a = $db->query("SELECT * FROM slot WHERE type_s = 'A'");
+        $request_a = $user->getSlotType('A');
+        $request_b = $user->getSlotType('B');
+        $request_c = $user->getSlotType('C');
         $this->display('parkingScheme', array(
             'user' => $user,
             'request_a' => $request_a,
