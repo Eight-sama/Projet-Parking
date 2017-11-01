@@ -32,14 +32,13 @@ class Authentication
         $password = sha1($_POST['password']);
         $request = $db->query("SELECT * FROM user WHERE email ='" . $email . "' AND password = '" . $password . "'");
         if ($response = $request->fetch()) {
-            if($response['lvl'] > 0){
+            if ($response['lvl'] > 0) {
                 $_SESSION['connected'] = true;
                 $_SESSION['id'] = $response['id_u'];
                 $_SESSION['lvl'] = $response['lvl'];
                 $_SESSION['email'] = $response['email'];
                 header('Location: ' . BASE_URL . '/index.php?page=profile');
-            }
-            else{
+            } else {
                 session_destroy();
                 header('Location: ' . BASE_URL . '/index.php?page=profile&notauthorized=yes');
             }
@@ -198,10 +197,10 @@ class Authentication
         $request->bindValue(":date", $application_date, PDO::PARAM_STR);
         $request->execute();
         $this->sql_check_error($request);
-        header('Location: '.BASE_URL.'/index.php?page=applyRegisterApp&registered=yes');
+        header('Location: ' . BASE_URL . '/index.php?page=applyRegisterApp&registered=yes');
     }
 
-    public function sql_check_error($statement)
+    public function sql_check_error()
     {
         global $db;
         $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
@@ -213,5 +212,19 @@ class Authentication
         $request = $bdd->query("SELECT * FROM user WHERE id_u=" . $_SESSION['id']);
         $response = $request->fetch();
         return $response;
+    }
+
+    public function getUserSlotApps()
+    {
+        global $db;
+        $request_slot = $db->query("SELECT * FROM reserve r, slot s WHERE id_u = '" . $_SESSION['id'] . "' AND etat = 0 AND r.id_s = s.id_s");
+        return $request_slot;
+    }
+
+    public function getUserSlots()
+    {
+        global $db;
+        $request_on = $db->query("SELECT * FROM reserve r, slot s WHERE id_u = '" . $_SESSION['id'] . "' AND r.id_s = s.id_s");
+        return $request_on;
     }
 }
