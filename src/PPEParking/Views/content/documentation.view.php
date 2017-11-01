@@ -61,14 +61,6 @@
                 </p>
                 <br>
             </div>
-            <div id="deconnexion">
-                <h2>Déconnexion</h2>
-                <p>Pour vous déconnecter, cliquez sur le bouton déconnexion en haut à droite de votre écran.
-                </p>
-                <br>
-                <img class="img-responsive img-thumbnail" src="<?= BASE_URL ?>/web/img/déconnexion.png">
-            </div>
-
         </div>
         <div class="col-xs-4">
             <ul class="list-group">
