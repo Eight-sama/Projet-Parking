@@ -16,6 +16,7 @@ use PPEParking\Controllers\ConfirmSlotApp;
 use PPEParking\Controllers\BeforeConfirmSlotApp;
 use PPEParking\Controllers\ManageSlots;
 use PPEParking\Controllers\Documentation;
+use PPEParking\Controllers\ModifySlot;
 
 /**
  * Class Launcher
@@ -95,6 +96,10 @@ class Launcher
         if($page == 'login'){
             $loginController = new Login();
             $loginController->start();
+        }
+        if($page == 'modifySlot'){
+            $modifySlotController = new ModifySlot();
+            $modifySlotController->start();
         }
         if($page == 'registerSlotApplications'){
             $registerSlotApplicationsController = new RegisterSlotApplications();

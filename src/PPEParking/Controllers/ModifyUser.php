@@ -9,10 +9,12 @@ class ModifyUser extends Functions{
     public function start(){
         $user = new Authentication();
         $request = $user->getUserInfoFromId();
-        $form = $this->input('text', 'email', 'Email');
-        $form .= $this->input('text', 'email', 'Surname');
-        $form .= $this->input('text', 'email', 'Name');
-        $form .= $this->submit('btn btn-primary', 'Mettre à jour', 'submit');
-        $this->display('modifyUser', array('user' => $user,'request' => $request, 'form' => $form));
+        if(isset($_POST['submit'])){
+            $user->updateOtherProfile();
+            header('Location: '.BASE_URL.'/index.php?page=modifyUser&id='.$_GET['id']);
+        }else{
+            $button = $this->submit('btn btn-primary ', 'Mettre à jour', 'submit');
+            $this->display('modifyUser', array('user' => $user,'request' => $request, 'button' => $button));
+        }
     }
 }

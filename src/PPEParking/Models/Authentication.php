@@ -76,6 +76,12 @@ class Authentication
         $request = $db->query("SELECT * FROM user WHERE id_u =" . $_GET['id']);
         return $request;
     }
+    public function getSlotInfoFromId()
+    {
+        global $db;
+        $request = $db->query("SELECT * FROM slot WHERE id_s =" . $_GET['id_slot']);
+        return $request;
+    }
 
     public function getAllUsersInfos()
     {
@@ -95,21 +101,23 @@ class Authentication
 
     public function updateOtherProfile()
     {
-        if (isset($_POST['submit']) && $this->isConnected() && $this->isAdmin()) {
-            if ($_POST['email'] != $this->getUserInfo($_GET['id_u'], 'email')) {
+        global $db;
+        if (isset($_POST['submit']) && $this->isConnected()) {
+            if ($_POST['email'] != $this->getUserInfo($_GET['id'], 'email')) {
+                $request = $db->prepare('UPDATE user SET email = ? WHERE id_u = ?');
+                $request->execute([$_POST['email'], $_GET['id']]);
+                $this->sql_check_error($request);
+            }
+            if ($_POST['surname'] != $this->getUserInfo($_GET['id'], 'surname')) {
+                $request = $db->prepare('UPDATE user SET surname = ? WHERE id_u = ?');
+                $request->execute([$_POST['surname'], $_GET['id']]);
+                $this->sql_check_error($request);
 
             }
-            if ($_POST['mdp'] != $this->getUserInfo($_GET['id_u'], 'mdp')) {
-
-            }
-            if ($_POST['login'] != $this->getUserInfo($_GET['id_u'], 'login')) {
-
-            }
-            if ($_POST['surname'] != $this->getUserInfo($_GET['id_u'], 'surname')) {
-
-            }
-            if ($_POST['name'] != $this->getUserInfo($_GET['id_u'], 'name')) {
-
+            if ($_POST['name'] != $this->getUserInfo($_GET['id'], 'name')) {
+                $request = $db->prepare('UPDATE user SET name = ? WHERE id_u = ?');
+                $request->execute([$_POST['name'], $_GET['id']]);
+                $this->sql_check_error($request);
             }
         }
     }

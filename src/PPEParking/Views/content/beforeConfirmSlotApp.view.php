@@ -23,7 +23,9 @@ if($response = $object['request_check']->fetch()) { ?>
         <div class="col-md-12 text-center">
             <h1>
                 <p>Il y a actuellement
-                    <?= $response['nb'] ?> personnes réservant cette places êtes vous sur de vouloir celle-ci ? </p>
+                    <?= $response['nb'] ?> personne(s) réservant cette place êtes vous sûr d'effectuer une demande ? </p>
+                    <p><small class="text-danger">Temps d'attente estimé :
+                    <?= $response['nb'] ?> semaine(s)</small></p>
             </h1>
         </div>
         <div class="col-md-12 text-center">

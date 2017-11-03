@@ -54,7 +54,7 @@
                     <?php while ($response = $object['request_on']->fetch()): ?>
                         <div class="panel panel-primary">
                             <div class="panel-heading">
-                                <span><h4>Demande pour la place <?= $response['name_s'];?></b></h4></span>
+                                <span><h4><b>Demande pour la place <?= $response['name_s'];?></b></h4></span>
                             </div>
                             <div class="panel-body">
                                 <span><small>Demande effectuée par <?= $response['surname']." ".$response['name'];?> le <?= $response['date_r_deb']; ?></small></span>
@@ -76,7 +76,7 @@
                     <?php while ($response = $object['request_accepted']->fetch()): ?>
                         <div class="panel panel-success">
                             <div class="panel-heading">
-                                <span><h4>Demande pour la place <?= $response['name_s'];?></b></h4></span>
+                                <span><h4><b>Demande pour la place <?= $response['name_s'];?></b></h4></span>
                             </div>
                             <div class="panel-body">
                                 <span><small>Demande effectuée par <?= $response['surname']." ".$response['name'];?> le <?= $response['date_r_deb']; ?>, fin de la réservation le <?= $response['date_r_fin']; ?></small></span>
@@ -93,7 +93,7 @@
                     <?php while ($response = $object['request_denied']->fetch()): ?>
                         <div class="panel panel-danger">
                             <div class="panel-heading">
-                                <span><h4>Demande pour la place <?= $response['name_s'];?></b></h4></span>
+                                <span><h4><b>Demande pour la place <?= $response['name_s'];?></b></h4></span>
                             </div>
                             <div class="panel-body">
                                 <span><small>Demande effectuée par <?= $response['surname']." ".$response['name'];?> le <?= $response['date_r_deb']; ?></small></span>
