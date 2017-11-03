@@ -30,12 +30,12 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="surname">Nom</label>
-                                    <input class="form-control" type="text" name="surname"
+                                    <input class="form-control" type="text" name="surname" pattern="[^0-9]+"
                                            value="<?= $object['user']->getUserInfo($_SESSION['id'], 'surname'); ?>"/>
                                 </div>
                                 <div class="form-group">
                                     <label for="name">Prénom</label>
-                                    <input class="form-control" type="text" name="name"
+                                    <input class="form-control" type="text" name="name" pattern="[^0-9]+"
                                            value="<?= $object['user']->getUserInfo($_SESSION['id'], 'name'); ?>"/>
                                 </div>
                                 <br>
