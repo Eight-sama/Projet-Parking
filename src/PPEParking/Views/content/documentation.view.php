@@ -81,6 +81,18 @@
                 </p>
                 <br>
             </div>
+            <div id="reservation">
+                <h2>Réservations</h2>
+                <p>Vous pouvez Réserver une place en vous rendant sur la page <a href="<?= BASE_URL; ?>/index.php?page=parkingScheme" target="_blank">Réserver une place</a>
+                    <br>
+                    Cliquez sur une des places disponibles (pour toutes réservations sur une place déjà existante veuillez contacter l'administrateur de votre secteur) et suivez simplement la procédure.
+                    <ul><li class="text-danger">Si vous choisissez de réserver une place où un autre utilisateur a déjà fait une demande, il se peut que l'administrateur valide la place pour la personne avant vous. Dans ce cas vous serez automatiquement mis sur la file d'attente et obtiendrez la place de parking dans les plus bref délais. (veuillez noter qu'il peut y avoir jusqu'à 1 semaine d'attente)</li>
+                    <br>
+                    <li>Vous pourrez suivre vos demandes de réservations depuis votre page de profil.</li>
+                    </ul>
+                </p>
+                <br>
+            </div>
         </div>
         <div class="col-xs-4">
             <ul class="list-group">
@@ -92,6 +104,7 @@
                 <li class="list-group-item"><a href="#inscription">Inscription</a></li>
                 <li class="list-group-item"><a href="#deconnexion">Déconnexion</a></li>
                 <li class="list-group-item"><a href="#modif_infos">Modifications infos personnelles</a></li>
+                <li class="list-group-item"><a href="#reservation">Réservation</a></li>
             </ul>
         </div>
     </div>

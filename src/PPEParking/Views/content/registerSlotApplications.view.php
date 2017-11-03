@@ -79,7 +79,7 @@
                                 <span><h4>Demande pour la place <?= $response['name_s'];?></b></h4></span>
                             </div>
                             <div class="panel-body">
-                                <span><small>Demande effectuée par <?= $response['surname']." ".$response['name'];?> le <?= $response['date_r_deb']; ?></small></span>
+                                <span><small>Demande effectuée par <?= $response['surname']." ".$response['name'];?> le <?= $response['date_r_deb']; ?>, fin de la réservation le <?= $response['date_r_fin']; ?></small></span>
                             </div>
                         </div>
                     <?php endwhile ?>

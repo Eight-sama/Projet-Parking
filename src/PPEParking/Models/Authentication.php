@@ -87,8 +87,9 @@ class Authentication
     {
         global $db;
         $state = 0;
+        $date_fin = date("Y-m-d", strtotime('+3 days', mktime(0, 0, 0, date('m'), date('d'), date('Y'))));
         $request = $db->prepare("INSERT INTO reserve(id_s,id_u,date_r_deb,etat,date_r_fin) VALUES (?,?,?,?,?)");
-        $request->execute([$_GET['id_slot'], $_SESSION['id'], date('Y-m-d'), $state, date('Y-m-d')]);
+        $request->execute([$_GET['id_slot'], $_SESSION['id'], date('Y-m-d'), $state, $date_fin]);
         $this->sql_check_error($request);
     }
 
@@ -205,9 +206,11 @@ class Authentication
     public function updateSlotAccept()
     {
         global $db;
-        $db->query("UPDATE reserve SET etat = 1 WHERE id_u = '" . $_GET['id'] . "' AND id_s = '" . $_GET['id_slot'] . "' AND id_r = '" . $_GET['id_r'] . "'");
+        $date_fin = date("Y-m-d", strtotime('+7 days', mktime(0, 0, 0, date('m'), date('d'), date('Y'))));
+        $db->query("UPDATE reserve SET etat = 1, date_r_fin = '".$date_fin."' WHERE id_u = '" . $_GET['id'] . "' AND id_s = '" . $_GET['id_slot'] . "' AND id_r = '" . $_GET['id_r'] . "'");
         $db->query("DELETE FROM reserve WHERE id_u = '" . $_GET['id'] . "' AND etat = 0");
         $db->query("UPDATE slot SET state_s = 1 WHERE id_s = '" . $_GET['id_slot'] . "'");
+        
     }
 
     public function updateSlotRefuse()
@@ -254,7 +257,7 @@ class Authentication
     public function getRequestOnModif()
     {
         global $db;
-        $request = $db->query("SELECT * FROM reserve r, user u, slot s WHERE etat = 0 AND u.id_u = r.id_u AND s.id_s = r.id_s");
+        $request = $db->query("SELECT * FROM reserve r, user u, slot s WHERE etat = 0 AND u.id_u = r.id_u AND s.id_s = r.id_s ORDER BY id_r ASC");
         return $request;
     }
 
